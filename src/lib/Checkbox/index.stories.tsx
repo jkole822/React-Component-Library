@@ -14,6 +14,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     className: { control: "text" },
+    defaultChecked: { control: "boolean" },
     validationState: {
       control: {
         type: "select",
@@ -32,6 +33,16 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {
     defaultChecked: false,
+    description: faker.lorem.sentence(),
+    disabled: false,
+    errorMessage: faker.lorem.sentence(),
+    name: faker.lorem.word(),
+  },
+};
+
+export const DefaultChecked: Story = {
+  args: {
+    defaultChecked: true,
     description: faker.lorem.sentence(),
     disabled: false,
     errorMessage: faker.lorem.sentence(),

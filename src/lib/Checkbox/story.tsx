@@ -5,24 +5,21 @@ import { useState } from "react";
 import Checkbox from ".";
 
 // Styles
-import {
-  PararaphStyles,
-  SubHeadingStyles,
-} from "../../../../Solid-Component-Library/src/styles";
+import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 // Types
 import type { Props } from "./types";
 
 export default function CheckboxStory({ defaultChecked, ...rest }: Props) {
-  const [checked, setChecked] = useState(defaultChecked ?? false);
+  const [checked, setChecked] = useState<boolean | "indeterminate">(false);
+
+  const checkedProps = defaultChecked
+    ? { defaultChecked }
+    : { checked, onCheckedChange: setChecked };
 
   return (
     <>
-      <Checkbox
-        {...rest}
-        checked={!defaultChecked ? checked : undefined}
-        onCheckedChange={!defaultChecked ? setChecked : undefined}
-      />
+      <Checkbox {...rest} {...checkedProps} />
       <p className={SubHeadingStyles}>Binding Check</p>
       <p className={PararaphStyles}>{checked ? "Checked" : "Not Checked"}</p>
     </>

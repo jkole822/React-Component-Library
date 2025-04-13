@@ -45,9 +45,9 @@ outline-none
 
 [&:disabled_svg_.path]:!stroke-neutral-primary-600
 
-[&:focus_label]:text-neutral-primary-50
+[&:focus-visible_label]:text-neutral-primary-50
 
-[&:focus_label:after]:w-full
+[&:focus-visible_label:after]:w-full
 `;
 
 export const LabelStyles = oneLine`
