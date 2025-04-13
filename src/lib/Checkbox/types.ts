@@ -19,5 +19,4 @@ export interface Props {
   name: string;
   onCheckedChange?: Dispatch<SetStateAction<boolean | "indeterminate">>;
   validationState?: CheckboxValidationState;
-  value?: string;
 }

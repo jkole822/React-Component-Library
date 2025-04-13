@@ -4,6 +4,7 @@ export const ContainerStyles = oneLine`
 checkbox-container
 cursor-pointer
 group
+w-fit
 
 data-disabled:cursor-not-allowed
 `;
@@ -33,7 +34,7 @@ outline-none
 [&[data-state=checked]_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
 [&[data-state=checked]_svg_.path]:[stroke-dashoffset:-262.2723388671875]
 
-[&[data-state=checked][data-invalid]_svg_.path]:stroke-red-500
+[&[data-state=checked][data-invalid=true]_svg_.path]:stroke-red-500
 
 [&:disabled_svg]:cursor-not-allowed
 
@@ -69,7 +70,7 @@ after:pointer-events-none
 after:transition-all
 after:w-0
 
-data-invalid:after:bg-red-500
+in-data-[invalid=true]:after:bg-red-500
 `;
 
 export const PathStyles = oneLine`
@@ -86,7 +87,7 @@ scale-50
 stroke-6
 stroke-neutral-primary-200
 
-in-data-invalid:stroke-red-500
+in-data-[invalid=true]:stroke-red-500
 `;
 
 export const VectorStyles = oneLine`

@@ -24,16 +24,15 @@ export default function Checkbox({
   validationState,
   ...rest
 }: Props) {
-  const rootProps = {
-    ...rest,
-    checked,
-    class: ContainerStyles,
-    name,
-  };
-
   return (
-    <div className={`${className} w-fit`}>
-      <RadixCheckbox.Root {...rootProps} className={InputStyles}>
+    <div className={`${className} ${ContainerStyles}`}>
+      <RadixCheckbox.Root
+        className={InputStyles}
+        checked={checked}
+        data-invalid={validationState === CheckboxValidationStateEnum.Invalid}
+        name={name}
+        {...rest}
+      >
         <svg
           className={VectorStyles}
           viewBox="0 0 64 64"
