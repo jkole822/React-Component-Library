@@ -43,6 +43,7 @@ export default function Carousel({ className = "", items }: Props) {
         {cards.map(({ cta, description, image, title }, index) => (
           <div
             className={CardStyles}
+            key={title}
             style={{
               backgroundImage: `url('${image.src}')`,
               left:
