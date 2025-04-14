@@ -15,7 +15,7 @@ export default function NumberInputStory(props: Props) {
   const [value, setValue] = useState("");
 
   const handleChange = (details: ArkNumberInput.ValueChangeDetails) => {
-    console.log(details);
+    setValue(details.value);
   };
 
   return (

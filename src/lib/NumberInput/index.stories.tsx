@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 
 // Components
-import NumberInput from ".";
+import NumberInput from "./story";
 
 // Types
 import { NumberInputValidationStateEnum } from "./types";
