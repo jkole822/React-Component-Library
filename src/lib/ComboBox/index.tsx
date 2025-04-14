@@ -28,7 +28,13 @@ import {
 // Types
 import { ComboBoxValidationStateEnum, type Props } from "./types";
 
-function ComboBoxRoot({ items: initialItems, name, value, ...rest }: Props) {
+function ComboBoxRoot({
+  className = "",
+  items: initialItems,
+  name,
+  value,
+  ...rest
+}: Props) {
   const [items, setItems] = useState(initialItems);
 
   const collection = useMemo(
@@ -50,6 +56,7 @@ function ComboBoxRoot({ items: initialItems, name, value, ...rest }: Props) {
   return (
     <ArkComboBox.Root
       {...rest}
+      className={className}
       collection={collection}
       name={name}
       onInputValueChange={handleInputChange}
@@ -58,13 +65,10 @@ function ComboBoxRoot({ items: initialItems, name, value, ...rest }: Props) {
       <ArkComboBox.Label className={LabelStyles}>{name}</ArkComboBox.Label>
       <ArkComboBox.Control className={ControlStyles}>
         <ArkComboBox.Input className={InputStyles} />
-        <ArkComboBox.Trigger aria-label="open" className={TriggerStyles}>
+        <ArkComboBox.Trigger className={TriggerStyles}>
           <i aria-hidden="true" className="fa-solid fa-sort"></i>
         </ArkComboBox.Trigger>
-        <ArkComboBox.ClearTrigger
-          aria-label="clear"
-          className={ClearTriggerStyles}
-        >
+        <ArkComboBox.ClearTrigger className={ClearTriggerStyles}>
           <i aria-hidden="true" className={ClearTriggerIconStyles}></i>
         </ArkComboBox.ClearTrigger>
       </ArkComboBox.Control>
@@ -74,8 +78,8 @@ function ComboBoxRoot({ items: initialItems, name, value, ...rest }: Props) {
             {collection.items.map((item) => (
               <ArkComboBox.Item
                 className={ItemStyles}
-                key={item.label}
                 item={item}
+                key={item.label}
               >
                 <ArkComboBox.ItemText className={ItemTextStyles}>
                   <span className={ItemLabelStyles}>{item.label}</span>
@@ -96,6 +100,7 @@ function ComboBoxRoot({ items: initialItems, name, value, ...rest }: Props) {
 }
 
 function ComboBoxWithField({
+  className = "",
   description,
   disabled,
   errorMessage,
@@ -106,6 +111,7 @@ function ComboBoxWithField({
 }: Props) {
   return (
     <Field.Root
+      className={className}
       disabled={disabled}
       invalid={validationState === ComboBoxValidationStateEnum.Invalid}
       readOnly={readOnly}
