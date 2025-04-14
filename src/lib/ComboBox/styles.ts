@@ -50,6 +50,9 @@ rounded-lg
 transition-color
 w-full
 
+data-disabled:cursor-not-allowed
+data-disabled:ring-neutral-secondary-600
+
 data-focus:ring-primary-500
 
 data-invalid:data-focus:ring-red-500
@@ -94,6 +97,8 @@ font-medium
 export const InputStyles = oneLine`
 outline-none
 w-[calc(100%-60px)]
+
+in-data-disabled:cursor-not-allowed
 `;
 
 export const ItemStyles = oneLine`
@@ -146,6 +151,8 @@ top-1/2
 transition-color
 
 hover:text-primary-400
+
+data-disabled:text-neutral-secondary-600
 
 data-invalid:hover:text-red-400
 `;
