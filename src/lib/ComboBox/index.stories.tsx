@@ -68,7 +68,6 @@ export const Single: Story = {
 export const Multiple: Story = {
   args: {
     ...args,
-    inputBehavior: ComboBoxInputBehaviorEnum.AutoHighlight,
     multiple: true,
   },
 };
@@ -87,7 +86,6 @@ export const MultipleWithField: Story = {
     ...args,
     description: faker.lorem.sentence(),
     errorMessage: faker.lorem.sentence(),
-    inputBehavior: ComboBoxInputBehaviorEnum.AutoHighlight,
     multiple: true,
     withField: true,
   },
