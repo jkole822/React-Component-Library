@@ -18,9 +18,9 @@ import {
 import { NumberInputValidationStateEnum } from "./types";
 import type { Props } from "./types";
 
-function NumberInputRoot({ className = "", name, step, ...rest }: Props) {
+function NumberInputRoot({ className = "", name, ...rest }: Props) {
   return (
-    <ArkNumberInput.Root {...rest} className={className} step={step}>
+    <ArkNumberInput.Root {...rest} className={className}>
       <ArkNumberInput.Label className={LabelStyles}>
         {name}
       </ArkNumberInput.Label>
