@@ -4,6 +4,7 @@ export const ClearTriggerIconStyles = oneLine`
 -translate-x-1/2
 -translate-y-1/2
 absolute
+combo-box-clear-trigger-icon
 fa-close
 fa-solid
 left-1/2
@@ -13,6 +14,7 @@ top-1/2
 export const ClearTriggerStyles = oneLine`
 -translate-y-1/2
 absolute
+combo-box-clear-trigger
 cursor-pointer
 duration-200
 right-10
@@ -31,6 +33,7 @@ data-invalid:hover:text-red-400
 
 export const ContentStyles = oneLine`
 bg-neutral-secondary-900
+combo-box-content
 max-h-50
 overflow-scroll
 px-3
@@ -42,6 +45,7 @@ w-full
 `;
 
 export const ControlStyles = oneLine`
+combo-box-control
 duration-200
 p-3
 relative
@@ -55,12 +59,12 @@ data-disabled:ring-neutral-secondary-600
 
 data-focus:ring-primary-500
 
-data-invalid:data-focus:ring-red-500
+data-invalid:ring-red-500
 `;
 
 export const DescriptionStyles = oneLine`
 block
-combobox-description
+combo-box-description
 mt-2
 text-neutral-primary-400
 text-sm
@@ -68,13 +72,14 @@ text-sm
 
 export const ErrorMessageStyles = oneLine`
 block
-combobox-error-message
+combo-box-error-message
 font-medium
 text-red-400
 text-sm
 `;
 
 export const ItemDescriptionStyles = oneLine`
+combo-box-item-description
 font-light
 text-neutral-primary-400
 text-sm
@@ -83,6 +88,7 @@ text-sm
 export const ItemIndicatorStyles = oneLine`
 -translate-y-1/2
 absolute
+combo-box-item-indicator
 right-2
 text-primary-500
 top-1/2
@@ -91,10 +97,12 @@ group-data-highlighted:text-primary-300
 `;
 
 export const ItemLabelStyles = oneLine`
+combo-box-item-label
 font-medium
 `;
 
 export const InputStyles = oneLine`
+combo-box-input
 outline-none
 w-[calc(100%-60px)]
 
@@ -102,6 +110,7 @@ in-data-disabled:cursor-not-allowed
 `;
 
 export const ItemStyles = oneLine`
+combo-box-item
 cursor-pointer
 duration-150
 group
@@ -123,11 +132,13 @@ data-highlighted:text-primary-300
 `;
 
 export const ItemTextStyles = oneLine`
+combo-box-item-text
 flex
 flex-col
 `;
 
 export const LabelStyles = oneLine`
+combo-box-label
 block
 capitalize
 duration-200
@@ -142,6 +153,7 @@ data-invalid:text-red-400
 `;
 
 export const TriggerStyles = oneLine`
+combo-box-trigger
 -translate-y-1/2
 absolute
 cursor-pointer
