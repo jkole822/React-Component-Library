@@ -4,6 +4,7 @@ export const ButtonStyles = oneLine`
 accordion-button
 bg-neutral-secondary-900
 cursor-pointer
+duration-200
 flex
 grow
 font-medium
@@ -68,6 +69,7 @@ py-4
 
 export const SectionStyles = oneLine`
 accordion-section
+duration-200
 overflow-hidden
 transition-colors
 

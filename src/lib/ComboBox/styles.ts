@@ -22,7 +22,7 @@ ring-primary-200
 rounded-full
 size-5
 top-1/2
-transition-color
+transition-colors
 
 hover:ring-2
 hover:text-primary-400
@@ -51,7 +51,7 @@ p-3
 relative
 ring-2
 rounded-lg
-transition-color
+transition-colors
 w-full
 
 data-disabled:cursor-not-allowed
@@ -112,7 +112,7 @@ in-data-disabled:cursor-not-allowed
 export const ItemStyles = oneLine`
 combo-box-item
 cursor-pointer
-duration-150
+duration-200
 group
 my-1.5
 px-2
@@ -120,7 +120,7 @@ py-1
 relative
 ring-primary-500
 rounded-md
-transition-color
+transition-colors
 
 data-disabled:bg-neutral-secondary-800
 data-disabled:cursor-not-allowed
@@ -145,7 +145,7 @@ duration-200
 font-medium
 mb-2
 text-sm
-transition-color
+transition-colors
 
 data-focus:text-primary-400
 
@@ -153,14 +153,14 @@ data-invalid:text-red-400
 `;
 
 export const TriggerStyles = oneLine`
-combo-box-trigger
 -translate-y-1/2
 absolute
+combo-box-trigger
 cursor-pointer
 duration-200
 right-4
 top-1/2
-transition-color
+transition-colors
 
 hover:text-primary-400
 

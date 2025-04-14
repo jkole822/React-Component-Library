@@ -24,7 +24,7 @@ text-sm
 
 export const InputStyles = ({ hasValue }: { hasValue?: boolean }) => oneLine`
 bg-transparent
-duration-150
+duration-200
 ease-[cubic-bezier(0.4,0,0.2,1)]
 input-input
 outline-hidden
@@ -123,7 +123,7 @@ ${
 
 export const LabelStyles = oneLine`
 absolute
-duration-150
+duration-200
 ease-[cubic-bezier(0.4,0,0.2,1)]
 input-label
 left-4
