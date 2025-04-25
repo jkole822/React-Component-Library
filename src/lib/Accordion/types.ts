@@ -40,6 +40,6 @@ export interface Props {
   items: AccordionItem[];
   orientation?: AccordionOrientationType;
   onValueChange?: Dispatch<SetStateAction<string | string[] | undefined>>;
-  type: AccordionType;
+  type?: AccordionType;
   value?: string | string[];
 }
