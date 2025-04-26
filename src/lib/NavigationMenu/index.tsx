@@ -174,7 +174,6 @@ export default function NavigationMenu({
                   disabled={disabled}
                 >
                   {title}
-
                   {hasSubMenu && (
                     <i
                       aria-hidden="true"
@@ -198,7 +197,6 @@ export default function NavigationMenu({
               </RadixNavigationMenu.Item>
             );
           })}
-
           <RadixNavigationMenu.Indicator
             className={IndicatorStyles}
             style={
@@ -212,7 +210,6 @@ export default function NavigationMenu({
             <div className={ArrowStyles} />
           </RadixNavigationMenu.Indicator>
         </RadixNavigationMenu.List>
-
         <div
           className={ViewportPositionStyles}
           style={

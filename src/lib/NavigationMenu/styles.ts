@@ -56,8 +56,8 @@ export const ContentWithCallout = oneLine`
 ${ContentStyles}
 grid-cols-1
 w-full
-sm:grid-cols-[0.75fr_1fr]
-sm:w-[min(500px,_90dvw)]
+xs:grid-cols-[0.75fr_1fr]
+xs:w-[min(500px,_90dvw)]
 
 [&_>_li:first-child]:row-span-3
 `;
@@ -66,8 +66,8 @@ export const ContentWithoutCallout = oneLine`
 ${ContentStyles}
 grid-cols-1
 w-full
-sm:grid-cols-2
-sm:w-[min(600px,_90dvw)]
+xs:grid-cols-2
+xs:w-[min(600px,_90dvw)]
 `;
 
 export const IconStyles = oneLine`
