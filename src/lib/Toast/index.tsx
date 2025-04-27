@@ -17,7 +17,7 @@ import type { Props } from "./types";
 const toaster = createToaster({
   placement: "bottom-end",
   overlap: true,
-  gap: 24,
+  gap: 10,
 });
 
 export default function Toast({ toast }: Props) {
@@ -30,9 +30,9 @@ export default function Toast({ toast }: Props) {
   };
 
   const updateToast = () => {
-    if (!id.current) return;
+    if (!id.current || !toast) return;
 
-    if (!!toast) toaster.update(id.current, toast);
+    toaster.update(id.current, toast);
   };
 
   useEffect(() => {

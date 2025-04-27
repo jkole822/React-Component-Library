@@ -33,7 +33,7 @@ toast-description
 
 export const RootStyles = oneLine`
 bg-neutral-secondary-900
-border-[1px]
+border
 border-neutral-secondary-600
 duration-200
 ease-[cubic-bezier(0.16, 1, 0.3, 1)]
@@ -57,4 +57,3 @@ font-medium
 text-neutral-primary-50
 toast-title
 `;
-
