@@ -8,6 +8,8 @@ h-full
 progress-indicator
 transition-all
 w-full
+
+data-[state=complete]:bg-primary-400
 `;
 
 export const LabelStyles = oneLine`
