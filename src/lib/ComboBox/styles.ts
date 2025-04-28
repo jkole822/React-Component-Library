@@ -152,6 +152,47 @@ data-focus:text-primary-400
 data-invalid:text-red-400
 `;
 
+export const PillCloseButtonStyles = oneLine`
+duration-200
+ease-in-out
+inline-flex
+items-center
+justify-center
+outline-hidden
+p-2
+ring-primary-400
+rounded-full
+size-4
+transition-all
+
+focus:ring-2
+
+hover:bg-primary-100 
+hover:text-primary-600
+`;
+
+export const PillContainerStyles = oneLine`
+flex
+flex-wrap
+gap-2.5
+pb-2.5
+w-[calc(100%-3.5rem)]
+`;
+
+export const PillStyles = oneLine`
+bg-neutral-secondary-900
+combo-box-selection-item
+gap-1.5
+inline-flex
+items-center
+px-1.5
+py-0.5
+ring-2
+ring-neutral-secondary-600
+rounded
+text-neutral-primary-400
+`;
+
 export const TriggerStyles = oneLine`
 -translate-y-1/2
 absolute

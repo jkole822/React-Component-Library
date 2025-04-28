@@ -17,9 +17,18 @@ export default function ComboBoxStory(props: Props) {
     setValue(update.value);
   };
 
+  const handleRemoveItem = (id: string) => {
+    setValue((prev) => prev.filter((item) => item !== id));
+  };
+
   return (
     <>
-      <ComboBox {...props} onValueChange={handleChange} value={value} />
+      <ComboBox
+        {...props}
+        onRemoveItem={handleRemoveItem}
+        onValueChange={handleChange}
+        value={value}
+      />
       <p className={SubHeadingStyles}>Binding Check</p>
       <p className={PararaphStyles}>Selected Item IDs:</p>
       <div className="flex flex-col gap-0.5 mt-1 text-sm">

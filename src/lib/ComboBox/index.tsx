@@ -2,6 +2,7 @@
 import {
   Combobox as ArkComboBox,
   createListCollection,
+  useCombobox,
 } from "@ark-ui/react/combobox";
 import { Field } from "@ark-ui/react/field";
 import { Portal } from "@ark-ui/react/portal";
@@ -22,6 +23,9 @@ import {
   ItemStyles,
   ItemTextStyles,
   LabelStyles,
+  PillCloseButtonStyles,
+  PillContainerStyles,
+  PillStyles,
   TriggerStyles,
 } from "./styles";
 
@@ -31,7 +35,9 @@ import { ComboBoxValidationStateEnum, type Props } from "./types";
 function ComboBoxRoot({
   className = "",
   items: initialItems,
+  multiple,
   name,
+  onRemoveItem,
   value,
   ...rest
 }: Props) {
@@ -53,49 +59,68 @@ function ComboBoxRoot({
     );
   };
 
+  const combobox = useCombobox({
+    ...rest,
+    collection,
+    multiple,
+    name,
+    onInputValueChange: handleInputChange,
+    value,
+  });
+
   return (
-    <ArkComboBox.Root
-      {...rest}
-      className={className}
-      collection={collection}
-      name={name}
-      onInputValueChange={handleInputChange}
-      value={value}
-    >
-      <ArkComboBox.Label className={LabelStyles}>{name}</ArkComboBox.Label>
-      <ArkComboBox.Control className={ControlStyles}>
-        <ArkComboBox.Input className={InputStyles} />
-        <ArkComboBox.Trigger className={TriggerStyles}>
-          <i aria-hidden="true" className="fa-solid fa-sort"></i>
-        </ArkComboBox.Trigger>
-        <ArkComboBox.ClearTrigger className={ClearTriggerStyles}>
-          <i aria-hidden="true" className={ClearTriggerIconStyles}></i>
-        </ArkComboBox.ClearTrigger>
-      </ArkComboBox.Control>
-      <Portal>
-        <ArkComboBox.Positioner>
-          <ArkComboBox.Content className={ContentStyles}>
-            {collection.items.map((item) => (
-              <ArkComboBox.Item
-                className={ItemStyles}
-                item={item}
-                key={item.label}
-              >
-                <ArkComboBox.ItemText className={ItemTextStyles}>
-                  <span className={ItemLabelStyles}>{item.label}</span>
-                  <span className={ItemDescriptionStyles}>
-                    {item.description}
-                  </span>
-                </ArkComboBox.ItemText>
-                <ArkComboBox.ItemIndicator className={ItemIndicatorStyles}>
-                  ✓
-                </ArkComboBox.ItemIndicator>
-              </ArkComboBox.Item>
-            ))}
-          </ArkComboBox.Content>
-        </ArkComboBox.Positioner>
-      </Portal>
-    </ArkComboBox.Root>
+    <ArkComboBox.RootProvider value={combobox}>
+      <div className={className}>
+        <ArkComboBox.Label className={LabelStyles}>{name}</ArkComboBox.Label>
+        <ArkComboBox.Control className={ControlStyles}>
+          {multiple && combobox.selectedItems.length > 0 && !!onRemoveItem && (
+            <div className={PillContainerStyles}>
+              {combobox.selectedItems.map((item) => (
+                <span className={PillStyles}>
+                  <span>{item.label}</span>
+                  <button
+                    className={PillCloseButtonStyles}
+                    onClick={() => onRemoveItem(item.value)}
+                  >
+                    <i aria-hidden="true" className="fa-solid fa-xmark"></i>
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+          <ArkComboBox.Input className={InputStyles} />
+          <ArkComboBox.Trigger className={TriggerStyles}>
+            <i aria-hidden="true" className="fa-solid fa-sort"></i>
+          </ArkComboBox.Trigger>
+          <ArkComboBox.ClearTrigger className={ClearTriggerStyles}>
+            <i aria-hidden="true" className={ClearTriggerIconStyles}></i>
+          </ArkComboBox.ClearTrigger>
+        </ArkComboBox.Control>
+        <Portal>
+          <ArkComboBox.Positioner>
+            <ArkComboBox.Content className={ContentStyles}>
+              {collection.items.map((item) => (
+                <ArkComboBox.Item
+                  className={ItemStyles}
+                  item={item}
+                  key={item.label}
+                >
+                  <ArkComboBox.ItemText className={ItemTextStyles}>
+                    <span className={ItemLabelStyles}>{item.label}</span>
+                    <span className={ItemDescriptionStyles}>
+                      {item.description}
+                    </span>
+                  </ArkComboBox.ItemText>
+                  <ArkComboBox.ItemIndicator className={ItemIndicatorStyles}>
+                    ✓
+                  </ArkComboBox.ItemIndicator>
+                </ArkComboBox.Item>
+              ))}
+            </ArkComboBox.Content>
+          </ArkComboBox.Positioner>
+        </Portal>
+      </div>
+    </ArkComboBox.RootProvider>
   );
 }
 

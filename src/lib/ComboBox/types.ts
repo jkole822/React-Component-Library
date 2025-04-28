@@ -70,6 +70,7 @@ export interface Props {
   onInteractOutside?: (event: any) => void;
   onOpenChange?: (details: Combobox.OpenChangeDetails) => void;
   onPointerDownOutside?: (event: any) => void;
+  onRemoveItem?: (value: string) => void;
   onValueChange?: (details: Combobox.ValueChangeDetails) => void;
   open?: boolean;
   openOnChange?:
