@@ -1,19 +1,21 @@
 // Packages
 import { Checkbox as RadixCheckbox } from "radix-ui";
+import { useRef } from "react";
+import { v4 as uuid } from "uuid";
 
 // Styles
 import {
   ContainerStyles,
-  DescriptionStyles,
-  ErrorMessageStyles,
   InputStyles,
   LabelStyles,
   PathStyles,
   VectorStyles,
 } from "./styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
 // Types
-import { CheckboxValidationStateEnum, type Props } from "./types";
+import { ValidationStateEnum } from "../../types";
+import type { Props } from "./types";
 
 export default function Checkbox({
   checked,
@@ -24,12 +26,19 @@ export default function Checkbox({
   validationState,
   ...rest
 }: Props) {
+  const id = useRef(uuid());
+
   return (
     <div className={`${className} ${ContainerStyles}`}>
       <RadixCheckbox.Root
+        {...(!!description || !!errorMessage
+          ? {
+              "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
+            }
+          : {})}
         className={InputStyles}
         checked={checked}
-        data-invalid={validationState === CheckboxValidationStateEnum.Invalid}
+        data-invalid={validationState === ValidationStateEnum.Invalid}
         name={name}
         {...rest}
       >
@@ -47,11 +56,24 @@ export default function Checkbox({
         </svg>
         <label className={LabelStyles}>{name}</label>
       </RadixCheckbox.Root>
-      {!!description && <div className={DescriptionStyles}>{description}</div>}
-      {!!errorMessage &&
-        validationState === CheckboxValidationStateEnum.Invalid && (
-          <div className={ErrorMessageStyles}>{errorMessage}</div>
-        )}
+      {(!!description || !!errorMessage) && (
+        <div className="ml-2 mt-1">
+          {!!description && (
+            <div className={DescriptionStyles} id={`${id.current}-description`}>
+              {description}
+            </div>
+          )}
+          {!!errorMessage &&
+            validationState === ValidationStateEnum.Invalid && (
+              <div
+                className={ErrorMessageStyles}
+                id={`${id.current}-error-message`}
+              >
+                {errorMessage}
+              </div>
+            )}
+        </div>
+      )}
     </div>
   );
 }

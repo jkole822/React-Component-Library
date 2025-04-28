@@ -9,21 +9,6 @@ w-fit
 data-disabled:cursor-not-allowed
 `;
 
-export const DescriptionStyles = oneLine`
-checkbox-description
-ml-1.5
-text-neutral-primary-400
-text-sm
-`;
-
-export const ErrorMessageStyles = oneLine`
-checkbox-error-message
-font-medium
-ml-1.5
-text-red-400
-text-sm
-`;
-
 export const InputStyles = oneLine`
 checkbox-input
 flex

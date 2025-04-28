@@ -1,13 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-
-export enum CheckboxValidationStateEnum {
-  Valid = "valid",
-  Invalid = "invalid",
-}
-
-export type CheckboxValidationState =
-  | CheckboxValidationStateEnum.Invalid
-  | CheckboxValidationStateEnum.Valid;
+import type { ValidationState } from "../../types";
 
 export interface Props {
   checked?: boolean | "indeterminate";
@@ -18,5 +10,5 @@ export interface Props {
   errorMessage?: string;
   name: string;
   onCheckedChange?: Dispatch<SetStateAction<boolean | "indeterminate">>;
-  validationState?: CheckboxValidationState;
+  validationState?: ValidationState;
 }

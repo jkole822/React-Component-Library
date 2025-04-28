@@ -9,8 +9,8 @@ import ComboBox from "./story";
 import {
   ComboBoxInputBehaviorEnum,
   ComboBoxSelectionBehaviorEnum,
-  ComboBoxValidationStateEnum,
 } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
@@ -37,8 +37,8 @@ const meta = {
     validationState: {
       control: "select",
       options: [
-        ComboBoxValidationStateEnum.Valid,
-        ComboBoxValidationStateEnum.Invalid,
+        ValidationStateEnum.Valid,
+        ValidationStateEnum.Invalid,
       ],
     },
   },

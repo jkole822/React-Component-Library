@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import Checkbox from "./story";
 
 // Types
-import { CheckboxValidationStateEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
@@ -19,10 +19,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: [
-        CheckboxValidationStateEnum.Invalid,
-        CheckboxValidationStateEnum.Valid,
-      ],
+      options: [ValidationStateEnum.Invalid, ValidationStateEnum.Valid],
     },
   },
 } satisfies Meta<typeof Checkbox>;

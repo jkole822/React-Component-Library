@@ -62,22 +62,6 @@ data-focus:ring-primary-500
 data-invalid:ring-red-500
 `;
 
-export const DescriptionStyles = oneLine`
-block
-combo-box-description
-mt-2
-text-neutral-primary-400
-text-sm
-`;
-
-export const ErrorMessageStyles = oneLine`
-block
-combo-box-error-message
-font-medium
-text-red-400
-text-sm
-`;
-
 export const ItemDescriptionStyles = oneLine`
 combo-box-item-description
 font-light

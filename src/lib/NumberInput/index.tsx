@@ -6,16 +6,15 @@ import { NumberInput as ArkNumberInput } from "@ark-ui/react/number-input";
 import {
   ControlStyles,
   DecrementTriggerStyles,
-  DescriptionStyles,
-  ErrorMessageStyles,
   IncrementTriggerStyles,
   InputContainerStyles,
   InputStyles,
   LabelStyles,
 } from "./styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
 // Types
-import { NumberInputValidationStateEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Props } from "./types";
 
 function NumberInputRoot({ className = "", name, ...rest }: Props) {
@@ -53,21 +52,23 @@ function NumberInputWithField({
     <Field.Root
       className={className}
       disabled={disabled}
-      invalid={validationState === NumberInputValidationStateEnum.Invalid}
+      invalid={validationState === ValidationStateEnum.Invalid}
       readOnly={readOnly}
       required={required}
     >
       <NumberInputRoot {...rest} />
-      {!!description && (
-        <Field.HelperText className={DescriptionStyles}>
-          {description}
-        </Field.HelperText>
-      )}
-      {!!errorMessage && (
-        <Field.ErrorText className={ErrorMessageStyles}>
-          {errorMessage}
-        </Field.ErrorText>
-      )}
+      <div className="mt-2">
+        {!!description && (
+          <Field.HelperText className={DescriptionStyles}>
+            {description}
+          </Field.HelperText>
+        )}
+        {!!errorMessage && (
+          <Field.ErrorText className={ErrorMessageStyles}>
+            {errorMessage}
+          </Field.ErrorText>
+        )}
+      </div>
     </Field.Root>
   );
 }

@@ -28,22 +28,6 @@ in-data-invalid:in-data-focus:border-red-500
 in-data-focus:border-primary-500
 `;
 
-export const DescriptionStyles = oneLine`
-block
-number-input-description
-mt-2
-text-neutral-primary-400
-text-sm
-`;
-
-export const ErrorMessageStyles = oneLine`
-block
-number-input-error-message
-font-medium
-text-red-400
-text-sm
-`;
-
 export const IncrementTriggerStyles = oneLine`
 border-b-2
 border-l-2

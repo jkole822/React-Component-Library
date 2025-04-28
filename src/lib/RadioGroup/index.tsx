@@ -1,6 +1,7 @@
 // Packages
-import { useEffect, useState } from "react";
 import { RadioGroup as RadixRadioGroup } from "radix-ui";
+import { useEffect, useRef, useState } from "react";
+import { v4 as uuid } from "uuid";
 
 // Styles
 import {
@@ -13,17 +14,17 @@ import {
   LabelStyles,
   OptionContainerStyles,
 } from "./styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
+import type { Props, RadioGroupOrientation } from "./types";
 // Types
-import {
-  Props,
-  RadioGroupOrientation,
-  RadioGroupOrientationEnum,
-  RadioGroupValidationStateEnum,
-} from "./types";
+import { RadioGroupOrientationEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 
-export default function RadioGroup({
+export default function RadioGroupRoot({
   className = "",
+  description,
+  errorMessage,
   items,
   name,
   orientation = RadioGroupOrientationEnum.Vertical,
@@ -32,6 +33,8 @@ export default function RadioGroup({
   ...rest
 }: Props) {
   const [valueIndex, setValueIndex] = useState<number | undefined>();
+  const id = useRef(uuid());
+
   const distance = (orientation: RadioGroupOrientation) =>
     orientation === orientation ? `${100 / items.length}%` : "100%";
 
@@ -42,16 +45,19 @@ export default function RadioGroup({
   return (
     <RadixRadioGroup.Root
       {...rest}
+      {...(!!description || !!errorMessage
+        ? {
+            "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
+          }
+        : {})}
       className={`${className} ${ContainerStyles}`}
+      data-invalid={validationState === ValidationStateEnum.Invalid}
       name={name}
       orientation={orientation}
       value={value}
     >
       <label className={LabelStyles}>{name}</label>
-      <div
-        className={OptionContainerStyles}
-        data-invalid={validationState === RadioGroupValidationStateEnum.Invalid}
-      >
+      <div className={OptionContainerStyles}>
         <div
           role="presentation"
           style={{
@@ -89,6 +95,24 @@ export default function RadioGroup({
           )}
         </div>
       </div>
+      {(!!description || !!errorMessage) && (
+        <div className="mt-2">
+          {!!description && (
+            <div className={DescriptionStyles} id={`${id.current}-description`}>
+              {description}
+            </div>
+          )}
+          {!!errorMessage &&
+            validationState === ValidationStateEnum.Invalid && (
+              <div
+                className={ErrorMessageStyles}
+                id={`${id.current}-error-message`}
+              >
+                {errorMessage}
+              </div>
+            )}
+        </div>
+      )}
     </RadixRadioGroup.Root>
   );
 }

@@ -14,8 +14,6 @@ import {
   ClearTriggerStyles,
   ContentStyles,
   ControlStyles,
-  DescriptionStyles,
-  ErrorMessageStyles,
   InputStyles,
   ItemDescriptionStyles,
   ItemIndicatorStyles,
@@ -28,9 +26,11 @@ import {
   PillStyles,
   TriggerStyles,
 } from "./styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
 // Types
-import { ComboBoxValidationStateEnum, type Props } from "./types";
+import { ValidationStateEnum } from "../../types";
+import type { Props } from "./types";
 
 function ComboBoxRoot({
   className = "",
@@ -48,14 +48,14 @@ function ComboBoxRoot({
       createListCollection({
         items: items.map((item) => ({ ...item, value: item.id })),
       }),
-    [items]
+    [items],
   );
 
   const handleInputChange = (details: ArkComboBox.InputValueChangeDetails) => {
     setItems(
       initialItems.filter((item) =>
-        item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-      )
+        item.label.toLowerCase().includes(details.inputValue.toLowerCase()),
+      ),
     );
   };
 
@@ -139,21 +139,23 @@ function ComboBoxWithField({
     <Field.Root
       className={className}
       disabled={disabled}
-      invalid={validationState === ComboBoxValidationStateEnum.Invalid}
+      invalid={validationState === ValidationStateEnum.Invalid}
       readOnly={readOnly}
       required={required}
     >
       <ComboBoxRoot {...rest} />
-      {!!description && (
-        <Field.HelperText className={DescriptionStyles}>
-          {description}
-        </Field.HelperText>
-      )}
-      {!!errorMessage && (
-        <Field.ErrorText className={ErrorMessageStyles}>
-          {errorMessage}
-        </Field.ErrorText>
-      )}
+      <div className="mt-2">
+        {!!description && (
+          <Field.HelperText className={DescriptionStyles}>
+            {description}
+          </Field.HelperText>
+        )}
+        {!!errorMessage && (
+          <Field.ErrorText className={ErrorMessageStyles}>
+            {errorMessage}
+          </Field.ErrorText>
+        )}
+      </div>
     </Field.Root>
   );
 }

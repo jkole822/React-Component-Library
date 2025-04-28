@@ -12,7 +12,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function NumberInputStory(props: Props) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("1");
 
   const handleChange = (details: ArkNumberInput.ValueChangeDetails) => {
     setValue(details.value);

@@ -5,11 +5,9 @@ import { faker } from "@faker-js/faker";
 import RadioGroup from "./story";
 
 // Types
+import { RadioGroupOrientationEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  RadioGroupOrientationEnum,
-  RadioGroupValidationStateEnum,
-} from "./types";
 
 const meta = {
   title: "RadioGroup",
@@ -26,10 +24,7 @@ const meta = {
     },
     validationState: {
       control: "select",
-      options: [
-        RadioGroupValidationStateEnum.Valid,
-        RadioGroupValidationStateEnum.Invalid,
-      ],
+      options: [ValidationStateEnum.Valid, ValidationStateEnum.Invalid],
     },
   },
 } satisfies Meta<typeof RadioGroup>;
@@ -49,7 +44,7 @@ const args = {
   onValueChange: (value: string) => console.log(value),
   orientation: RadioGroupOrientationEnum.Vertical,
   required: false,
-  validationState: RadioGroupValidationStateEnum.Valid,
+  validationState: ValidationStateEnum.Valid,
   value: "",
 };
 
@@ -61,5 +56,20 @@ export const Horizontal = {
   args: {
     ...args,
     orientation: RadioGroupOrientationEnum.Horizontal,
+  },
+};
+
+export const VerticalWithField: Story = {
+  args: {
+    ...args,
+    withField: true,
+  },
+};
+
+export const HorizontalWithField = {
+  args: {
+    ...args,
+    orientation: RadioGroupOrientationEnum.Horizontal,
+    withField: true,
   },
 };

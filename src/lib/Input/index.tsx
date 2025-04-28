@@ -2,16 +2,12 @@
 import { Field } from "@ark-ui/react/field";
 
 // Styles
-import {
-  ContainerStyles,
-  DescriptionStyles,
-  ErrorMessageStyles,
-  InputStyles,
-  LabelStyles,
-} from "./styles";
+import { ContainerStyles, InputStyles, LabelStyles } from "./styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
 // Types
-import { InputTypeEnum, InputValidationStateEnum } from "./types";
+import { InputTypeEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Props } from "./types";
 
 export default function Input({
@@ -25,7 +21,7 @@ export default function Input({
   readOnly,
   required,
   type = InputTypeEnum.text,
-  validationState = InputValidationStateEnum.Valid,
+  validationState = ValidationStateEnum.Valid,
   value,
   ...rest
 }: Props) {
@@ -33,7 +29,7 @@ export default function Input({
     <Field.Root
       className={`${className} ${ContainerStyles}`}
       disabled={disabled}
-      invalid={validationState === InputValidationStateEnum.Invalid}
+      invalid={validationState === ValidationStateEnum.Invalid}
       readOnly={readOnly}
       required={required}
     >
@@ -47,16 +43,18 @@ export default function Input({
         value={value}
       />
       <Field.Label className={LabelStyles}>{name}</Field.Label>
-      {!!description && (
-        <Field.HelperText className={DescriptionStyles}>
-          {description}
-        </Field.HelperText>
-      )}
-      {!!errorMessage && (
-        <Field.ErrorText className={ErrorMessageStyles}>
-          {description}
-        </Field.ErrorText>
-      )}
+      <div className="mt-2">
+        {!!description && (
+          <Field.HelperText className={DescriptionStyles}>
+            {description}
+          </Field.HelperText>
+        )}
+        {!!errorMessage && (
+          <Field.ErrorText className={ErrorMessageStyles}>
+            {description}
+          </Field.ErrorText>
+        )}
+      </div>
     </Field.Root>
   );
 }

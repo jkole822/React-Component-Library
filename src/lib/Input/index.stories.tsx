@@ -6,11 +6,8 @@ import { v4 as uuid } from "uuid";
 import Input from "./story";
 
 // Types
-import {
-  AutoCompleteEnum,
-  InputTypeEnum,
-  InputValidationStateEnum,
-} from "../Input/types";
+import { AutoCompleteEnum, InputTypeEnum } from "./types";
+import { ValidationStateEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
@@ -44,10 +41,7 @@ const meta = {
     },
     validationState: {
       control: "select",
-      options: [
-        InputValidationStateEnum.Valid,
-        InputValidationStateEnum.Invalid,
-      ],
+      options: [ValidationStateEnum.Valid, ValidationStateEnum.Invalid],
     },
   },
 } satisfies Meta<typeof Input>;

@@ -1,4 +1,5 @@
 import { Combobox } from "@ark-ui/react/combobox";
+import { ValidationState } from "../../types";
 
 export enum ComboBoxInputBehaviorEnum {
   None = "none",
@@ -12,11 +13,6 @@ export enum ComboBoxSelectionBehaviorEnum {
   Preserve = "preserve",
 }
 
-export enum ComboBoxValidationStateEnum {
-  Valid = "valid",
-  Invalid = "invalid",
-}
-
 export type ComboBoxInputBehavior =
   | ComboBoxInputBehaviorEnum.None
   | ComboBoxInputBehaviorEnum.AutoHighlight
@@ -26,10 +22,6 @@ export type ComboBoxSelectionBehavior =
   | ComboBoxSelectionBehaviorEnum.Replace
   | ComboBoxSelectionBehaviorEnum.Clear
   | ComboBoxSelectionBehaviorEnum.Preserve;
-
-export type ComboBoxValidationState =
-  | ComboBoxValidationStateEnum.Valid
-  | ComboBoxValidationStateEnum.Invalid;
 
 export interface ComboBoxItem {
   id: string;
@@ -87,7 +79,7 @@ export interface Props {
   selectionBehavior?: ComboBoxSelectionBehavior;
   skipAnimationOnMount?: boolean;
   unmountOnExit?: boolean;
-  validationState?: ComboBoxValidationState;
+  validationState?: ValidationState;
   value?: string[];
   withField?: boolean;
 }

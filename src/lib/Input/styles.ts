@@ -6,22 +6,6 @@ relative
 w-full
 `;
 
-export const DescriptionStyles = oneLine`
-block
-input-description
-mt-2
-text-neutral-primary-400
-text-sm
-`;
-
-export const ErrorMessageStyles = oneLine`
-block
-input-error-message
-font-medium
-text-red-400
-text-sm
-`;
-
 export const InputStyles = ({ hasValue }: { hasValue?: boolean }) => oneLine`
 bg-transparent
 duration-200
