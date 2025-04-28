@@ -79,6 +79,7 @@ function ComboBoxRoot({
                 <span className={PillStyles} key={item.value}>
                   <span>{item.label}</span>
                   <button
+                    aria-label="Remove item"
                     className={PillCloseButtonStyles}
                     onClick={() => onRemoveItem(item.value)}
                   >
