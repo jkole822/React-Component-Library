@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.7.0",
     "@faker-js/faker": "^9.6.0",
     "common-tags": "^1.8.2",
     "radix-ui": "^1.2.0",
