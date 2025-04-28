@@ -1,5 +1,5 @@
 // Packages
-import { Progress as ArkProgress } from "radix-ui";
+import { Progress as RadixProgress } from "radix-ui";
 import { useRef } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -18,7 +18,7 @@ export default function Progress({
   const id = useRef(uuid());
 
   return (
-    <ArkProgress.Root
+    <RadixProgress.Root
       {...rest}
       className={`${className} ${RootStyles}`}
       id={id.current}
@@ -27,7 +27,7 @@ export default function Progress({
       <label className={LabelStyles} htmlFor={id.current}>
         {label}
       </label>
-      <ArkProgress.Indicator
+      <RadixProgress.Indicator
         className={IndicatorStyles}
         style={
           !!value || value === 0
@@ -35,6 +35,6 @@ export default function Progress({
             : {}
         }
       />
-    </ArkProgress.Root>
+    </RadixProgress.Root>
   );
 }
