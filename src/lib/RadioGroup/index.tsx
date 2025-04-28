@@ -16,10 +16,10 @@ import {
 } from "./styles";
 import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
-import type { Props, RadioGroupOrientation } from "./types";
 // Types
 import { RadioGroupOrientationEnum } from "./types";
 import { ValidationStateEnum } from "../../types";
+import type { Props, RadioGroupOrientation } from "./types";
 
 export default function RadioGroupRoot({
   className = "",
@@ -30,6 +30,7 @@ export default function RadioGroupRoot({
   orientation = RadioGroupOrientationEnum.Vertical,
   validationState,
   value,
+  withField,
   ...rest
 }: Props) {
   const [valueIndex, setValueIndex] = useState<number | undefined>();
@@ -95,7 +96,7 @@ export default function RadioGroupRoot({
           )}
         </div>
       </div>
-      {(!!description || !!errorMessage) && (
+      {withField && (
         <div className="mt-2">
           {!!description && (
             <div className={DescriptionStyles} id={`${id.current}-description`}>

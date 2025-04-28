@@ -24,6 +24,7 @@ export default function Checkbox({
   errorMessage,
   name,
   validationState,
+  withField,
   ...rest
 }: Props) {
   const id = useRef(uuid());
@@ -56,7 +57,7 @@ export default function Checkbox({
         </svg>
         <label className={LabelStyles}>{name}</label>
       </RadixCheckbox.Root>
-      {(!!description || !!errorMessage) && (
+      {withField && (
         <div className="ml-2 mt-1">
           {!!description && (
             <div className={DescriptionStyles} id={`${id.current}-description`}>
