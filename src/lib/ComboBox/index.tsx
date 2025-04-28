@@ -76,7 +76,7 @@ function ComboBoxRoot({
           {multiple && combobox.selectedItems.length > 0 && !!onRemoveItem && (
             <div className={PillContainerStyles}>
               {combobox.selectedItems.map((item) => (
-                <span className={PillStyles}>
+                <span className={PillStyles} key={item.value}>
                   <span>{item.label}</span>
                   <button
                     className={PillCloseButtonStyles}
