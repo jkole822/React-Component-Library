@@ -53,11 +53,14 @@ export default function RadioGroupRoot({
         : {})}
       className={`${className} ${ContainerStyles}`}
       data-invalid={validationState === ValidationStateEnum.Invalid}
+      id={id.current}
       name={name}
       orientation={orientation}
       value={value}
     >
-      <label className={LabelStyles}>{name}</label>
+      <label className={LabelStyles} htmlFor={id.current}>
+        {name}
+      </label>
       <div className={OptionContainerStyles}>
         <div
           role="presentation"
