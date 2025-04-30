@@ -2,23 +2,19 @@
 import { faker } from "@faker-js/faker";
 
 // Components
-import Accordion from "./story";
+import { SingleAccordionStory } from "./story";
 
 // Styles
 import { IconStyles } from "../../styles";
 
 // Types
-import {
-  AccordionDirectionEnum,
-  AccordionEnum,
-  AccordionOrientationEnum,
-} from "./types";
+import { AccordionDirectionEnum, AccordionOrientationEnum } from "./types";
 import { HeadingLevelEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: "Accordion",
-  component: Accordion,
+  title: "Accordion - Single",
+  component: SingleAccordionStory,
   tags: ["autodocs"],
   argTypes: {
     className: { control: "text" },
@@ -26,7 +22,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: [AccordionDirectionEnum.left, AccordionDirectionEnum.right],
+      options: [AccordionDirectionEnum.Left, AccordionDirectionEnum.Right],
     },
     headingLevel: {
       control: {
@@ -46,18 +42,12 @@ const meta = {
         type: "select",
       },
       options: [
-        AccordionOrientationEnum.horizontal,
-        AccordionOrientationEnum.vertical,
+        AccordionOrientationEnum.Horizontal,
+        AccordionOrientationEnum.Vertical,
       ],
     },
-    type: {
-      control: {
-        type: "select",
-      },
-      options: [AccordionEnum.single, AccordionEnum.multiple],
-    },
   },
-} satisfies Meta<typeof Accordion>;
+} satisfies Meta<typeof SingleAccordionStory>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -78,38 +68,19 @@ const generateItems = (length: number) =>
     title: faker.lorem.words(3),
   }));
 
-export const Single: Story = {
-  args: {
-    collapsible: false,
-    headingLevel: HeadingLevelEnum.Three,
-    items: generateItems(5),
-    type: AccordionEnum.single,
-  },
+const args = {
+  headingLevel: HeadingLevelEnum.Three,
+  items: generateItems(5),
+  type: "single" as const,
 };
 
-export const SingleWithDefault: Story = {
-  args: {
-    collapsible: false,
-    defaultValue: "item-1",
-    headingLevel: HeadingLevelEnum.Three,
-    items: generateItems(5),
-    type: AccordionEnum.single,
-  },
+export const Basic: Story = {
+  args,
 };
 
-export const Multiple: Story = {
+export const WithDefaultValues: Story = {
   args: {
-    headingLevel: HeadingLevelEnum.Three,
-    items: generateItems(5),
-    type: AccordionEnum.multiple,
-  },
-};
-
-export const MultipleWithDefault: Story = {
-  args: {
-    defaultValue: ["item-1", "item-2"],
-    headingLevel: HeadingLevelEnum.Three,
-    items: generateItems(5),
-    type: AccordionEnum.multiple,
+    ...args,
+    defaultValue: "item-2",
   },
 };

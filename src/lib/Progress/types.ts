@@ -1,7 +1,6 @@
-export interface Props {
+import { Progress } from "radix-ui";
+
+export interface Props extends Progress.ProgressProps {
   className?: string;
-  getLabelValue?: (value: number, max: number) => string;
-  label: string;
-  max?: number;
-  value: number | null;
+  label?: string;
 }

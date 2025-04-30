@@ -39,6 +39,7 @@ function ComboBoxRoot({
   name,
   onRemoveItem,
   value,
+  withField,
   ...rest
 }: Props) {
   const [items, setItems] = useState(initialItems);
@@ -48,14 +49,14 @@ function ComboBoxRoot({
       createListCollection({
         items: items.map((item) => ({ ...item, value: item.id })),
       }),
-    [items],
+    [items]
   );
 
   const handleInputChange = (details: ArkComboBox.InputValueChangeDetails) => {
     setItems(
       initialItems.filter((item) =>
-        item.label.toLowerCase().includes(details.inputValue.toLowerCase()),
-      ),
+        item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+      )
     );
   };
 
@@ -71,7 +72,9 @@ function ComboBoxRoot({
   return (
     <ArkComboBox.RootProvider value={combobox}>
       <div className={className}>
-        <ArkComboBox.Label className={LabelStyles}>{name}</ArkComboBox.Label>
+        {withField && (
+          <ArkComboBox.Label className={LabelStyles}>{name}</ArkComboBox.Label>
+        )}
         <ArkComboBox.Control className={ControlStyles}>
           {multiple && combobox.selectedItems.length > 0 && !!onRemoveItem && (
             <div className={PillContainerStyles}>
@@ -143,7 +146,7 @@ function ComboBoxWithField({
       readOnly={readOnly}
       required={required}
     >
-      <ComboBoxRoot {...rest} />
+      <ComboBoxRoot {...rest} withField />
       <div className="mt-2">
         {!!description && (
           <Field.HelperText className={DescriptionStyles}>

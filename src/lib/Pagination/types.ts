@@ -1,13 +1,7 @@
-import { Pagination } from "@ark-ui/react/pagination";
+import { Pagination } from "@ark-ui/react";
 
-export interface Props {
+export interface Props extends Pagination.RootProps {
   className?: string;
-  count: number;
   hideNextButton?: boolean;
   hidePreviousButton?: boolean;
-  onPageChange: (details: Pagination.PageChangeDetails) => void;
-  onPageSizeChange?: (details: Pagination.PageSizeChangeDetails) => void;
-  page: number;
-  pageSize: number;
-  siblingCount?: number;
 }

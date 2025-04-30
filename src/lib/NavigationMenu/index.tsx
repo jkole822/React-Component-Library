@@ -5,7 +5,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { v4 as uuid } from "uuid";
 
 // Components
-import Accordion from "../Accordion";
+import { SingleAccordion } from "../Accordion";
 import Popover from "../Popover";
 
 // Styles
@@ -111,7 +111,7 @@ export default function NavigationMenu({
           )}
         </Element>
       );
-    },
+    }
   );
 
   const accordionItems = items
@@ -248,10 +248,11 @@ export default function NavigationMenu({
           </button>
         }
       >
-        <Accordion
+        <SingleAccordion
           collapsible
           headingLevel={HeadingLevelEnum.Two}
           items={accordionItems}
+          type="single"
         />
         {items
           .filter((menuItem) => !!menuItem.href)

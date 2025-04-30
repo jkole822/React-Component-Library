@@ -23,12 +23,8 @@ const args = {
   count: 100,
   hideNextButton: false,
   hidePreviousButton: false,
-  onPageChange: (details: ArkPagination.PageChangeDetails) => {
-    console.log("Page Change: ", details);
-  },
-  onPageSizeChange: (details: ArkPagination.PageSizeChangeDetails) => {
-    console.log("Page Size Change: ", details);
-  },
+  onPageChange: () => {},
+  onPageSizeChange: () => {},
   page: 1,
   pageSize: 10,
   siblingCount: 1,

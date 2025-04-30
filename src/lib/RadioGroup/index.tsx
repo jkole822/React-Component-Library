@@ -44,61 +44,65 @@ export default function RadioGroupRoot({
   }, [value]);
 
   return (
-    <RadixRadioGroup.Root
-      {...rest}
-      {...(!!description || !!errorMessage
-        ? {
-            "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
-          }
-        : {})}
-      className={`${className} ${ContainerStyles}`}
-      data-invalid={validationState === ValidationStateEnum.Invalid}
-      id={id.current}
-      name={name}
-      orientation={orientation}
-      value={value}
-    >
-      <label className={LabelStyles} htmlFor={id.current}>
-        {name}
-      </label>
-      <div className={OptionContainerStyles}>
-        <div
-          role="presentation"
-          style={{
-            height: "100%",
-            gridTemplateColumns: items.map(() => "1fr").join(" "),
-          }}
-        >
-          {items.map((item) => (
-            <RadixRadioGroup.Item
-              className={ItemStyles}
-              key={item}
-              id={`item-${item}`}
-              value={item}
-            >
-              <RadixRadioGroup.Indicator className={InputStyles} />
-              <label className={ItemLabelStyles} htmlFor={`item-${item}`}>
-                {item}
-              </label>
-            </RadixRadioGroup.Item>
-          ))}
+    <div className={className}>
+      {withField && (
+        <label className={LabelStyles} htmlFor={id.current}>
+          {name}
+        </label>
+      )}
+      <RadixRadioGroup.Root
+        {...rest}
+        {...(withField && (!!description || !!errorMessage)
+          ? {
+              "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
+            }
+          : {})}
+        className={ContainerStyles}
+        data-invalid={validationState === ValidationStateEnum.Invalid}
+        id={id.current}
+        name={name}
+        orientation={orientation}
+        value={value}
+      >
+        <div className={OptionContainerStyles}>
+          <div
+            role="presentation"
+            style={{
+              height: "100%",
+              gridTemplateColumns: items.map(() => "1fr").join(" "),
+            }}
+          >
+            {items.map((item) => (
+              <RadixRadioGroup.Item
+                className={ItemStyles}
+                key={item}
+                id={`item-${item}`}
+                value={item}
+              >
+                <RadixRadioGroup.Indicator className={InputStyles} />
+                <label className={ItemLabelStyles} htmlFor={`item-${item}`}>
+                  {item}
+                </label>
+              </RadixRadioGroup.Item>
+            ))}
+          </div>
+          <div className={GliderContainerStyles}>
+            {!!value && (
+              <div
+                className={GliderStyles}
+                style={{
+                  height: distance(RadioGroupOrientationEnum.Vertical),
+                  transform:
+                    valueIndex || valueIndex === 0
+                      ? `translate${orientation === RadioGroupOrientationEnum.Horizontal ? "X" : "Y"}(${valueIndex! * 100}%)`
+                      : "",
+                  width: distance(RadioGroupOrientationEnum.Horizontal),
+                }}
+              ></div>
+            )}
+          </div>
         </div>
-        <div className={GliderContainerStyles}>
-          {!!value && (
-            <div
-              className={GliderStyles}
-              style={{
-                height: distance(RadioGroupOrientationEnum.Vertical),
-                transform:
-                  valueIndex || valueIndex === 0
-                    ? `translate${orientation === RadioGroupOrientationEnum.Horizontal ? "X" : "Y"}(${valueIndex! * 100}%)`
-                    : "",
-                width: distance(RadioGroupOrientationEnum.Horizontal),
-              }}
-            ></div>
-          )}
-        </div>
-      </div>
+      </RadixRadioGroup.Root>
       {withField && (
         <div className="mt-2">
           {!!description && (
@@ -117,6 +121,6 @@ export default function RadioGroupRoot({
             )}
         </div>
       )}
-    </RadixRadioGroup.Root>
+    </div>
   );
 }

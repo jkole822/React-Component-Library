@@ -105,15 +105,14 @@ transition-all
 `;
 
 export const LabelStyles = oneLine`
-duration-300
-ease-in-out
-font-extrabold
-radio-group-label
-tracking-wider
-uppercase
-transition-all
-
-in-data-disabled:opacity-50
+block
+capitalize
+duration-200
+font-medium
+mb-2
+select-label
+text-sm
+transition-colors
 `;
 
 export const OptionContainerStyles = oneLine`

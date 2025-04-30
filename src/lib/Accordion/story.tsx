@@ -2,20 +2,34 @@
 import { useState } from "react";
 
 // Components
-import Accordion from ".";
+import { MultipleAccordion, SingleAccordion } from ".";
 
 // Styles
 import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 // Types
-import type { Props } from "./types";
+import type { MultipleProps, SingleProps } from "./types";
 
-export default function AccordionStory(props: Props) {
-  const [value, setValue] = useState<string | string[] | undefined>();
+export function SingleAccordionStory(props: SingleProps) {
+  const [value, setValue] = useState<string | undefined>();
 
   return (
     <>
-      <Accordion {...props} onValueChange={setValue} value={value} />
+      <SingleAccordion {...props} onValueChange={setValue} value={value} />
+      <p className={SubHeadingStyles}>Binding Check</p>
+      <p className={PararaphStyles}>
+        {Array.isArray(value) ? value.map((item) => item) : value}
+      </p>
+    </>
+  );
+}
+
+export function MultipleAccordionStory(props: MultipleProps) {
+  const [value, setValue] = useState<string[] | undefined>();
+
+  return (
+    <>
+      <MultipleAccordion {...props} onValueChange={setValue} value={value} />
       <p className={SubHeadingStyles}>Binding Check</p>
       <p className={PararaphStyles}>
         {Array.isArray(value) ? value.map((item) => item) : value}

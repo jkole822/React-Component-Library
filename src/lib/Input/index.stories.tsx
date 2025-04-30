@@ -76,8 +76,7 @@ export const PasswordField: Story = {
   args: {
     ...args,
     autoComplete: AutoCompleteEnum.newPassword,
-    minLength: 8,
-    maxLength: 16,
+    inputProps: { minLength: 8, maxLength: 16 },
     type: InputTypeEnum.password,
   },
 };

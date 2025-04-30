@@ -35,23 +35,25 @@ export default function DialogStory({ defaultOpen, ...rest }: Props) {
         <div className="border-t-2 border-neutral-secondary-700">
           <Input
             autoComplete={AutoCompleteEnum.name}
-            className="mb-7 mt-5"
+            className="mb-7 mt-5 [&_.input-input_~_label]:bg-neutral-secondary-900!"
             id="name"
-            inputClass="[&_~_label]:bg-neutral-secondary-900!"
+            inputProps={{
+              onChange: (event) => setName(event.target.value),
+              value: name,
+            }}
             name="Name"
-            onChange={setName}
             required
-            value={name}
           />
           <Input
             autoComplete={AutoCompleteEnum.username}
-            className=""
+            className="[&_.input-input_~_label]:bg-neutral-secondary-900!"
             id="username"
-            inputClass="[&_~_label]:bg-neutral-secondary-900!"
+            inputProps={{
+              onChange: (event) => setUsername(event.target.value),
+              value: username,
+            }}
             name="Username"
-            onChange={setUsername}
             required
-            value={username}
           />
         </div>
       </Dialog>

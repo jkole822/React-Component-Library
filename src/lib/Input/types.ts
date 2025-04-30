@@ -1,3 +1,4 @@
+import { Field } from "@ark-ui/react";
 import type { Dispatch, SetStateAction } from "react";
 import type { ValidationState } from "../../types";
 
@@ -31,22 +32,13 @@ export type InputType =
   | InputTypeEnum.password
   | InputTypeEnum.text;
 
-export interface Props {
+export interface Props extends Field.RootBaseProps {
   autoComplete?: AutoCompleteType;
   className?: string;
   description?: string;
-  disabled?: boolean;
   errorMessage?: string;
-  id?: string;
-  inputClass?: string;
+  inputProps?: Field.InputProps;
   name?: string;
-  maxLength?: number;
-  minLength?: number;
-  onChange?: Dispatch<SetStateAction<string>>;
-  placeholder?: string;
-  readOnly?: boolean;
-  required?: boolean;
   type?: InputType;
   validationState?: ValidationState;
-  value?: string;
 }

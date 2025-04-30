@@ -17,12 +17,14 @@ import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 import { ValidationStateEnum } from "../../types";
 import type { Props } from "./types";
 
-function NumberInputRoot({ className = "", name, ...rest }: Props) {
+function NumberInputRoot({ className = "", name, withField, ...rest }: Props) {
   return (
     <ArkNumberInput.Root {...rest} className={className}>
-      <ArkNumberInput.Label className={LabelStyles}>
-        {name}
-      </ArkNumberInput.Label>
+      {withField && (
+        <ArkNumberInput.Label className={LabelStyles}>
+          {name}
+        </ArkNumberInput.Label>
+      )}
       <div className={InputContainerStyles}>
         <ArkNumberInput.Input className={InputStyles} />
         <ArkNumberInput.Control className={ControlStyles}>
@@ -56,7 +58,7 @@ function NumberInputWithField({
       readOnly={readOnly}
       required={required}
     >
-      <NumberInputRoot {...rest} />
+      <NumberInputRoot {...rest} withField />
       <div className="mt-2">
         {!!description && (
           <Field.HelperText className={DescriptionStyles}>

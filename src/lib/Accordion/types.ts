@@ -1,26 +1,24 @@
+import { Accordion } from "radix-ui";
 import type { HeadingLevels } from "../../types";
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import type { ReactNode } from "react";
 
 export enum AccordionDirectionEnum {
-  left = "ltr",
-  right = "rtl",
+  Left = "ltr",
+  Right = "rtl",
 }
+
+export type AccordionDirectionType =
+  | AccordionDirectionEnum.Left
+  | AccordionDirectionEnum.Right;
 
 export enum AccordionOrientationEnum {
-  horizontal = "horizontal",
-  vertical = "vertical",
+  Horizontal = "horizontal",
+  Vertical = "vertical",
 }
 
-export enum AccordionEnum {
-  single = "single",
-  multiple = "multiple",
-}
-
-export type AccordionDirectionType = `${AccordionDirectionEnum}`;
-
-export type AccordionOrientationType = `${AccordionOrientationEnum}`;
-
-export type AccordionType = `${AccordionEnum}`;
+export type AccordionOrientationType =
+  | AccordionOrientationEnum.Horizontal
+  | AccordionOrientationEnum.Vertical;
 
 export interface AccordionItem {
   id: string;
@@ -30,16 +28,16 @@ export interface AccordionItem {
   title: string;
 }
 
-export interface Props {
+export interface SingleProps extends Accordion.AccordionSingleProps {
   className?: string;
-  collapsible?: boolean;
-  defaultValue?: string | string[];
-  dir?: AccordionDirectionType;
-  disabled?: boolean;
   headingLevel: HeadingLevels;
   items: AccordionItem[];
   orientation?: AccordionOrientationType;
-  onValueChange?: Dispatch<SetStateAction<string | string[] | undefined>>;
-  type?: AccordionType;
-  value?: string | string[];
+}
+
+export interface MultipleProps extends Accordion.AccordionMultipleProps {
+  className?: string;
+  headingLevel: HeadingLevels;
+  items: AccordionItem[];
+  orientation?: AccordionOrientationType;
 }

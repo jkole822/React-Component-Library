@@ -36,13 +36,14 @@ export default function PopoverStory(props: Props) {
       >
         <Input
           autoComplete={AutoCompleteEnum.name}
-          className="mt-8"
+          className="[&_.input-input_~_label]:bg-neutral-secondary-900! mt-8"
           id={id}
-          inputClass="[&_~_label]:bg-neutral-secondary-900!"
+          inputProps={{
+            onChange: (event) => setValue(event.target.value),
+            value,
+          }}
           name={name}
-          onChange={setValue}
           required
-          value={value}
         />
       </Popover>
       <p className={SubHeadingStyles}>Binding Check</p>

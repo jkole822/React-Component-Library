@@ -1,15 +1,10 @@
-import type { Dispatch, SetStateAction } from "react";
+import { Checkbox } from "radix-ui";
 import type { ValidationState } from "../../types";
 
-export interface Props {
-  checked?: boolean | "indeterminate";
+export interface Props extends Checkbox.CheckboxProps {
   className?: string;
-  defaultChecked?: boolean | "indeterminate";
   description?: string;
-  disabled?: boolean;
   errorMessage?: string;
-  name: string;
-  onCheckedChange?: Dispatch<SetStateAction<boolean | "indeterminate">>;
   validationState?: ValidationState;
   withField?: boolean;
 }

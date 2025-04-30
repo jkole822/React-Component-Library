@@ -1,11 +1,8 @@
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import { Collapsible } from "radix-ui";
+import type { ReactNode } from "react";
 
-export interface Props {
+export interface Props extends Collapsible.CollapsibleProps {
   buttonContent: ReactNode;
   children: ReactNode;
   className?: string;
-  defaultOpen?: boolean;
-  disabled?: boolean;
-  onOpenChange?: Dispatch<SetStateAction<boolean>>;
-  open?: boolean;
 }

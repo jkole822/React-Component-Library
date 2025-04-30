@@ -13,34 +13,25 @@ import type { Props } from "./types";
 export default function Input({
   className = "",
   description,
-  disabled,
   errorMessage,
-  inputClass = "",
   name,
-  onChange,
-  readOnly,
-  required,
+  inputProps,
   type = InputTypeEnum.text,
   validationState = ValidationStateEnum.Valid,
-  value,
   ...rest
 }: Props) {
   return (
     <Field.Root
+      {...rest}
       className={`${className} ${ContainerStyles}`}
-      disabled={disabled}
       invalid={validationState === ValidationStateEnum.Invalid}
-      readOnly={readOnly}
-      required={required}
     >
       <Field.Input
-        {...rest}
-        className={`${inputClass} ${InputStyles({
-          hasValue: !!value,
-        })}`}
-        {...(!!onChange ? { onChange: (e) => onChange(e.target.value) } : {})}
+        {...inputProps}
+        className={InputStyles({
+          hasValue: !!inputProps?.value,
+        })}
         type={type}
-        value={value}
       />
       <Field.Label className={LabelStyles}>{name}</Field.Label>
       <div className="mt-2">

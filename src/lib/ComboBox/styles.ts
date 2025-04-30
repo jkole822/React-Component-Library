@@ -130,10 +130,6 @@ font-medium
 mb-2
 text-sm
 transition-colors
-
-data-focus:text-primary-400
-
-data-invalid:text-red-400
 `;
 
 export const PillCloseButtonStyles = oneLine`
