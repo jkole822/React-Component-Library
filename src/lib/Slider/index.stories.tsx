@@ -5,8 +5,9 @@ import { faker } from "@faker-js/faker";
 import Slider from "./story";
 
 // Types
-import type { Meta, StoryObj } from "@storybook/react";
+import { ValidationStateEnum } from "../../types";
 import { SliderOrientationEnum } from "./types";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   title: "Slider",
@@ -23,10 +24,7 @@ const meta = {
     },
     validationState: {
       control: "select",
-      options: [
-        SliderValidationStateEnum.Valid,
-        SliderValidationStateEnum.Invalid,
-      ],
+      options: [ValidationStateEnum.Valid, ValidationStateEnum.Invalid],
     },
   },
 } satisfies Meta<typeof Slider>;
@@ -35,7 +33,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const args = {
-  defaultValue: [30],
+  defaultValue: [25],
   description: faker.lorem.sentence(),
   errorMessage: faker.lorem.sentence(),
   getValueLabel: (params: { min: number; max: number; values: number[] }) =>
@@ -50,16 +48,32 @@ const args = {
   readOnly: false,
   required: false,
   step: 1,
-  validationState: SliderValidationStateEnum.Valid,
+  validationState: ValidationStateEnum.Valid,
+  value: [25],
 };
 
 export const Basic: Story = {
   args,
 };
 
+export const Vertical: Story = {
+  args: {
+    ...args,
+    orientation: SliderOrientationEnum.Vertical,
+  },
+};
+
 export const MultiValue: Story = {
   args: {
     ...args,
     defaultValue: [25, 75],
+    value: [25, 75],
+  },
+};
+
+export const WithField: Story = {
+  args: {
+    ...args,
+    withField: true,
   },
 };
