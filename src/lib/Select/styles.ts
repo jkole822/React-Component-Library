@@ -74,6 +74,8 @@ mb-2
 select-label
 text-sm
 transition-colors
+
+in-data-[invalid=true]:text-red-400
 `;
 
 export const ScrollIconStyles = oneLine`
@@ -103,7 +105,7 @@ w-full
 data-disabled:cursor-not-allowed
 data-disabled:ring-neutral-secondary-600
 
-data-[invalid=true]:ring-red-500
+in-data-[invalid=true]:ring-red-500
 
 data-placeholder:[&_span:first-child]:opacity-50
 

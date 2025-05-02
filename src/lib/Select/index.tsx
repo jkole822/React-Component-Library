@@ -35,7 +35,10 @@ export default function Select({
   const id = useRef(uuid());
 
   return (
-    <div className={className}>
+    <div
+      className={className}
+      data-invalid={validationState === ValidationStateEnum.Invalid}
+    >
       {withField && (
         <label className={LabelStyles} htmlFor={id.current}>
           {name}
@@ -49,7 +52,6 @@ export default function Select({
               }
             : {})}
           className={TriggerStyles}
-          data-invalid={validationState === ValidationStateEnum.Invalid}
         >
           <RadixSelect.Value placeholder={placeholder} />
           <RadixSelect.Icon>

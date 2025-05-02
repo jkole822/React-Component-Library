@@ -85,7 +85,5 @@ number-input-label
 text-sm
 transition-colors
 
-data-focus:text-primary-400
-
 data-invalid:text-red-400
 `;

@@ -30,8 +30,12 @@ export default function Checkbox({
   const id = useRef(uuid());
 
   return (
-    <div className={`${className} ${ContainerStyles}`}>
+    <div
+      className={`${className} ${ContainerStyles}`}
+      data-invalid={validationState === ValidationStateEnum.Invalid}
+    >
       <RadixCheckbox.Root
+        {...rest}
         {...(!!description || !!errorMessage
           ? {
               "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
@@ -39,9 +43,8 @@ export default function Checkbox({
           : {})}
         className={InputStyles}
         checked={checked}
-        data-invalid={validationState === ValidationStateEnum.Invalid}
+        id={id.current}
         name={name}
-        {...rest}
       >
         <svg
           className={VectorStyles}
@@ -55,7 +58,9 @@ export default function Checkbox({
             pathLength="575.0541381835938"
           ></path>
         </svg>
-        <label className={LabelStyles}>{name}</label>
+        <label className={LabelStyles} htmlFor={id.current}>
+          {name}
+        </label>
       </RadixCheckbox.Root>
       {withField && (
         <div className="ml-2 mt-1">

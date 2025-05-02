@@ -13,7 +13,7 @@ data-disabled:[&_*]:cursor-not-allowed
 
 focus-within:[&_.radio-group-label]:text-primary-400
 
-data-[invalid=true]:focus-within:[&_.radio-group-label]:text-red-400
+in-data-[invalid=true]:focus-within:[&_.radio-group-label]:text-red-400
 `;
 
 export const GliderContainerStyles = oneLine`
@@ -113,6 +113,8 @@ mb-2
 select-label
 text-sm
 transition-colors
+
+in-data-[invalid=true]:text-red-400
 `;
 
 export const OptionContainerStyles = oneLine`

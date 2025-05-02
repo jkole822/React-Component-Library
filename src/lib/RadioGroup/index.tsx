@@ -44,7 +44,10 @@ export default function RadioGroupRoot({
   }, [value]);
 
   return (
-    <div className={className}>
+    <div
+      className={className}
+      data-invalid={validationState === ValidationStateEnum.Invalid}
+    >
       {withField && (
         <label className={LabelStyles} htmlFor={id.current}>
           {name}
@@ -58,7 +61,6 @@ export default function RadioGroupRoot({
             }
           : {})}
         className={ContainerStyles}
-        data-invalid={validationState === ValidationStateEnum.Invalid}
         id={id.current}
         name={name}
         orientation={orientation}

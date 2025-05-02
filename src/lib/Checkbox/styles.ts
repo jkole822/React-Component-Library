@@ -15,11 +15,11 @@ flex
 items-center
 outline-none
 
-[&[data-state=checked]_svg_.path]:stroke-primary-500
-[&[data-state=checked]_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
-[&[data-state=checked]_svg_.path]:[stroke-dashoffset:-262.2723388671875]
+data-[state=checked]:[&_svg_.path]:stroke-primary-500
+data-[state=checked]:[&_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
+data-[state=checked]:[&_svg_.path]:[stroke-dashoffset:-262.2723388671875]
 
-[&[data-state=checked][data-invalid=true]_svg_.path]:stroke-red-500
+data-[state=checked]:in-data-[invalid=true]:[&_svg_.path]:stroke-red-500
 
 [&:disabled_svg]:cursor-not-allowed
 
