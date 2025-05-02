@@ -38,12 +38,16 @@ export default function Carousel({ className = "", items }: Props) {
   };
 
   return (
-    <div className={`${className} ${ContainerStyles}`}>
+    <div
+      aria-roledescription="carousel"
+      className={`${className} ${ContainerStyles}`}
+    >
       <div className={CarouselStyles}>
-        {cards.map(({ cta, description, image, title }, index) => (
+        {cards.map(({ cta, description, id, image, title }, index) => (
           <div
+            aria-hidden={index !== 1}
             className={CardStyles}
-            key={title}
+            key={id}
             style={{
               backgroundImage: `url('${image.src}')`,
               left:
@@ -66,6 +70,7 @@ export default function Carousel({ className = "", items }: Props) {
       </div>
       <div className={ButtonContainerStyles}>
         <Button
+          aria-label="Previous slide"
           className={ButtonStyles}
           onClick={handlePrevious}
           variant={ButtonVariantsEnum.fill}
@@ -73,6 +78,7 @@ export default function Carousel({ className = "", items }: Props) {
           <i aria-hidden="true" className={ButtonIconStyles}></i>
         </Button>
         <Button
+          aria-label="Next slide"
           className={ButtonStyles}
           onClick={handleNext}
           variant={ButtonVariantsEnum.fill}
