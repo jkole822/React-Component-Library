@@ -6,7 +6,7 @@ relative
 w-full
 `;
 
-export const InputStyles = ({ hasValue }: { hasValue?: boolean }) => oneLine`
+export const InputStyles = oneLine`
 bg-transparent
 duration-200
 ease-[cubic-bezier(0.4,0,0.2,1)]
@@ -88,21 +88,15 @@ data-invalid:ring-red-500
 [&[data-invalid]::-webkit-datetime-edit-day-field:focus]:ring-red-500
 [&[data-invalid]::-webkit-datetime-edit-month-field:focus]:ring-red-500
 [&[data-invalid]::-webkit-datetime-edit-year-field:focus]:ring-red-500
-${
-  hasValue
-    ? `
-    ring-primary-500
 
-    [&_~_label]:-translate-y-[55%]
-    [&_~_label]:bg-neutral-secondary-800
-    [&_~_label]:px-1
-    [&_~_label]:scale-[0.8]
-    [&_~_label]:text-primary-500
+data-[has-value=true]:ring-primary-500
+data-[has-value=true]:[&_~_label]:-translate-y-[55%]
+data-[has-value=true]:[&_~_label]:bg-neutral-secondary-800
+data-[has-value=true]:[&_~_label]:px-1
+data-[has-value=true]:[&_~_label]:scale-[0.8]
+data-[has-value=true]:[&_~_label]:text-primary-500
 
-    [&[data-invalid]_~_label]:text-red-500
-    `
-    : ``
-}
+data-[has-value=true]:[&[data-invalid]_~_label]:text-red-500
 `;
 
 export const LabelStyles = oneLine`

@@ -28,9 +28,8 @@ export default function Input({
     >
       <Field.Input
         {...inputProps}
-        className={InputStyles({
-          hasValue: !!inputProps?.value,
-        })}
+        className={InputStyles}
+        data-has-value={!!inputProps?.value}
         type={type}
       />
       <Field.Label className={LabelStyles}>{name}</Field.Label>
