@@ -1,5 +1,7 @@
 // Packages
 import { Slider as RadixSlider } from "radix-ui";
+import { useRef } from "react";
+import { v4 as uuid } from "uuid";
 
 // Slider
 import {
@@ -25,16 +27,24 @@ export default function Slider({
   withField,
   ...rest
 }: Props) {
+  const id = useRef(uuid());
+
   return (
     <div data-invalid={validationState === ValidationStateEnum.Invalid}>
       {withField && (
-        <div className={LabelStyles}>
-          <label>{name}</label>
-        </div>
+        <label className={LabelStyles} htmlFor={id.current}>
+          {name}
+        </label>
       )}
       <RadixSlider.Root
         {...rest}
+        {...(withField && (!!description || !!errorMessage)
+          ? {
+              "aria-describedby": `${description ? `${id.current}-description` : ``} ${errorMessage && validationState === ValidationStateEnum.Invalid ? `${id.current}-error-message` : ``}`,
+            }
+          : {})}
         className={`${className} ${RootStyles}`}
+        id={id.current}
         name={name}
       >
         <RadixSlider.Track className={TrackStyles}>
@@ -47,11 +57,18 @@ export default function Slider({
       {withField && (
         <div className="mt-2">
           {!!description && (
-            <div className={DescriptionStyles}>{description}</div>
+            <div className={DescriptionStyles} id={`${id.current}-description`}>
+              {description}
+            </div>
           )}
           {!!errorMessage &&
             validationState === ValidationStateEnum.Invalid && (
-              <div className={ErrorMessageStyles}>{errorMessage}</div>
+              <div
+                className={ErrorMessageStyles}
+                id={`${id.current}-error-message`}
+              >
+                {errorMessage}
+              </div>
             )}
         </div>
       )}
