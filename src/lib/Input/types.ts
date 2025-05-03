@@ -1,5 +1,4 @@
 import { Field } from "@ark-ui/react";
-import type { Dispatch, SetStateAction } from "react";
 import type { ValidationState } from "../../types";
 
 export enum AutoCompleteEnum {

@@ -24,6 +24,10 @@ size-5
 top-1/2
 transition-colors
 
+in-data-disabled:cursor-not-allowed
+in-data-disabled:ring-0!
+in-data-disabled:text-neutral-secondary-600!
+
 hover:ring-2
 hover:text-primary-400
 
@@ -59,7 +63,7 @@ data-disabled:ring-neutral-secondary-600
 
 data-focus:ring-primary-500
 
-data-invalid:ring-red-500
+data-invalid:ring-red-500!
 `;
 
 export const ItemDescriptionStyles = oneLine`
@@ -91,6 +95,7 @@ outline-none
 w-[calc(100%-60px)]
 
 in-data-disabled:cursor-not-allowed
+in-data-disabled:text-neutral-secondary-600
 `;
 
 export const ItemStyles = oneLine`
@@ -187,6 +192,7 @@ transition-colors
 
 hover:text-primary-400
 
+data-disabled:cursor-not-allowed
 data-disabled:text-neutral-secondary-600
 
 data-invalid:hover:text-red-400

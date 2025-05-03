@@ -52,6 +52,7 @@ type Story = StoryObj<typeof meta>;
 const args = {
   autoComplete: AutoCompleteEnum.off,
   description: faker.lorem.sentence(),
+  disabled: false,
   errorMessage: faker.lorem.sentence(),
   id: uuid(),
   name: faker.lorem.word(),

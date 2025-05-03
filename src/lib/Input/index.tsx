@@ -11,6 +11,7 @@ import { ValidationStateEnum } from "../../types";
 import type { Props } from "./types";
 
 export default function Input({
+  autoComplete,
   className = "",
   description,
   errorMessage,
@@ -28,6 +29,7 @@ export default function Input({
     >
       <Field.Input
         {...inputProps}
+        autoComplete={autoComplete}
         className={InputStyles}
         data-has-value={!!inputProps?.value}
         type={type}
