@@ -11,7 +11,7 @@ import { IconStyles } from "../../styles";
 
 // Types
 import { ButtonVariantsEnum } from "./types";
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   title: "Button",
@@ -93,7 +93,7 @@ export const Fill: Story = {
         <ButtonContent />
       </Button>
     );
-  }
+  },
 };
 
 export const Outline: Story = {
@@ -107,14 +107,14 @@ export const Outline: Story = {
         <ButtonContent />
       </Button>
     );
-  }
+  },
 };
 
 export const LineOne: Story = {
   args: {
     ...args,
-    href: "https://www.solidjs.com/",
-    target: "_blank",
+    href: "https://react.dev/",
+    target: "_self",
     variant: ButtonVariantsEnum.lineOne,
   },
   render(args) {
@@ -123,13 +123,13 @@ export const LineOne: Story = {
         <ButtonContent />
       </Button>
     );
-  }
+  },
 };
 
 export const LineTwo: Story = {
   args: {
     ...args,
-    href: "https://www.solidjs.com/",
+    href: "https://react.dev/",
     target: "_blank",
     variant: ButtonVariantsEnum.lineTwo,
   },
@@ -139,5 +139,5 @@ export const LineTwo: Story = {
         <ButtonContent />
       </Button>
     );
-  }
+  },
 };

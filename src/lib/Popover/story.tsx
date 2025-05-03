@@ -4,15 +4,16 @@ import { v4 as uuid } from "uuid";
 import { useMemo, useState } from "react";
 
 // Components
+import Button from "../Button";
 import Input from "../Input";
 import Popover from ".";
 
 // Styles
-import { OutlineButtonStyles } from "../Button/styles";
 import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 // Types
 import { AutoCompleteEnum } from "../Input/types";
+import { ButtonVariantsEnum } from "../Button/types.ts";
 import type { Props } from "./types";
 
 export default function PopoverStory(props: Props) {
@@ -25,13 +26,16 @@ export default function PopoverStory(props: Props) {
     <>
       <Popover
         {...props}
+        open={open}
         onOpenChange={setOpen}
         trigger={
-          <button
-            className={`${OutlineButtonStyles({ showBottomGlow: false })} p-0! rounded-full! size-15!`}
+          <Button
+            className="rounded-full! p-0! size-15!"
+            onClick={() => setOpen(!open)}
+            variant={ButtonVariantsEnum.outline}
           >
             <i aria-hidden="true" className="fa-solid fa-ghost text-2xl"></i>
-          </button>
+          </Button>
         }
       >
         <Input
