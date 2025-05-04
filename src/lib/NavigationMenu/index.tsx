@@ -48,6 +48,7 @@ export default function NavigationMenu({
   homeHref,
   icon,
   items,
+  onValueChange,
   orientation,
   title,
   ...rest
@@ -71,6 +72,8 @@ export default function NavigationMenu({
       const id = `content-radix-«r${match[1]}»`;
       setCurrentValueId(id);
     }
+
+    if (!!onValueChange) onValueChange(value);
   };
 
   useEffect(() => {
@@ -111,7 +114,7 @@ export default function NavigationMenu({
           )}
         </Element>
       );
-    }
+    },
   );
 
   const accordionItems = items

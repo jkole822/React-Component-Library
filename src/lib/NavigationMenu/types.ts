@@ -1,3 +1,4 @@
+import { NavigationMenu } from "radix-ui";
 import type { ImageProps } from "../../types";
 
 export enum NavigationMenuOrientationEnum {
@@ -27,15 +28,11 @@ export interface NavigationMenuTrigger {
   title: string;
 }
 
-export interface Props {
+export interface Props extends NavigationMenu.NavigationMenuProps {
   className?: string;
-  delayDuration?: number;
   homeHref?: string;
   icon?: ImageProps;
   items: NavigationMenuTrigger[];
-  onValueChange?: (value: string) => void;
   orientation?: NavigationMenuOrientation;
-  skipDelayDuration: number;
   title?: string;
-  value?: string;
 }
