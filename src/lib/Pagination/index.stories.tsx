@@ -9,10 +9,13 @@ const meta = {
   component: Pagination,
   tags: ["autodocs"],
   args: {
+    count: 100,
     defaultPage: 1,
     defaultPageSize: 10,
+    hideNextButton: false,
+    hidePreviousButton: false,
     siblingCount: 1,
-    type: "button"
+    type: "button",
   },
   argTypes: {
     asChild: {
@@ -38,11 +41,11 @@ const meta = {
     },
     hideNextButton: {
       control: "boolean",
-      description: "Hide the next page button."
+      description: "Hide the next page button.",
     },
     hidePreviousButton: {
       control: "boolean",
-      description: "Hide the previous page button."
+      description: "Hide the previous page button.",
     },
     ids: {
       control: "object",
@@ -85,19 +88,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const args = {
-  count: 100,
-  hideNextButton: false,
-  hidePreviousButton: false,
-};
-
-export const Basic: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const HiddenPreviousNextButtons: Story = {
   args: {
-    ...args,
     hideNextButton: true,
     hidePreviousButton: true,
   },
