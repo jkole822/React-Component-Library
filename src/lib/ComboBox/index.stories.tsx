@@ -14,20 +14,35 @@ import {
 import { ValidationStateEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
+const generateItems = (length: number) =>
+  Array.from({ length }).map((_, index) => ({
+    id: uuid(),
+    label: faker.lorem.words(2),
+    description: faker.lorem.sentence(),
+    disabled: index === 2,
+    value: uuid(),
+  }));
+
 const meta = {
   title: "ComboBox",
   component: ComboBox,
   tags: ["autodocs"],
   args: {
+    collection: createListCollection({
+      items: generateItems(10),
+    }),
     composite: true,
     defaultInputValue: "",
     defaultValue: [],
     inputBehavior: ComboBoxInputBehaviorEnum.None,
+    items: generateItems(10),
     lazyMount: false,
     loopFocus: true,
+    name: faker.lorem.word(),
     openOnChange: true,
     openOnClick: false,
     openOnKeyPress: true,
+    placeholder: faker.lorem.words(2),
     positioning: { placement: "bottom-start" },
     selectionBehavior: ComboBoxSelectionBehaviorEnum.Replace,
     skipAnimationOnMount: false,
@@ -157,7 +172,7 @@ const meta = {
         "The `name` attribute of the combobox's input. Useful for form submission.",
     },
     navigate: {
-      action: 'navigate',
+      action: "navigate",
       description:
         "(details: NavigateDetails) => void\nFunction to navigate to the selected item.",
       table: {
@@ -165,7 +180,7 @@ const meta = {
       },
     },
     onExitComplete: {
-      action: 'onExitComplete',
+      action: "onExitComplete",
       description:
         "VoidFunction\nFunction called when the animation ends in the closed state.",
       table: {
@@ -173,7 +188,7 @@ const meta = {
       },
     },
     onHighlightChange: {
-      action: 'onHighlightChange',
+      action: "onHighlightChange",
       description:
         "(details: HighlightChangeDetails<T>) => void\nFunction called when an item is highlighted using the pointer or keyboard navigation.",
       table: {
@@ -181,7 +196,7 @@ const meta = {
       },
     },
     onInputValueChange: {
-      action: 'onInputValueChange',
+      action: "onInputValueChange",
       description:
         "(details: InputValueChangeDetails) => void\nFunction called when the input's value changes.",
       table: {
@@ -189,7 +204,7 @@ const meta = {
       },
     },
     onInteractOutside: {
-      action: 'onInteractOutside',
+      action: "onInteractOutside",
       description:
         "(event: InteractOutsideEvent) => void\nFunction called when an interaction happens outside the component.",
       table: {
@@ -197,7 +212,7 @@ const meta = {
       },
     },
     onOpenChange: {
-      action: 'onOpenChange',
+      action: "onOpenChange",
       description:
         "(details: OpenChangeDetails) => void\nFunction called when the popup is opened.",
       table: {
@@ -205,7 +220,7 @@ const meta = {
       },
     },
     onPointerDownOutside: {
-      action: 'onPointerDownOutside',
+      action: "onPointerDownOutside",
       description:
         "(event: PointerDownOutsideEvent) => void\nFunction called when the pointer is pressed down outside the component.",
       table: {
@@ -213,7 +228,7 @@ const meta = {
       },
     },
     onRemoveItem: {
-      action: 'onRemoveItem',
+      action: "onRemoveItem",
       description:
         "(value: string) => void\nFunction called when `multiple` is `true` and an item is removed from list of selected items.",
       table: {
@@ -221,7 +236,7 @@ const meta = {
       },
     },
     onSelect: {
-      action: 'onSelect',
+      action: "onSelect",
       description:
         "(details: SelectionDetails) => void\nFunction called when an item is selected",
       table: {
@@ -229,7 +244,7 @@ const meta = {
       },
     },
     onValueChange: {
-      action: 'onValueChange',
+      action: "onValueChange",
       description:
         "(details: ValueChangeDetails<T>) => void\nFunction called when a new item is selected",
       table: {
@@ -277,7 +292,7 @@ const meta = {
       description: "Whether the combobox is required.",
     },
     scrollToIndexFn: {
-      action: 'scrollToIndexFn',
+      action: "scrollToIndexFn",
       description:
         "(details: ScrollToIndexDetails) => void\nFunction to scroll to a specific index.",
       table: {
@@ -327,39 +342,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const generateItems = (length: number) =>
-  Array.from({ length }).map((_, index) => ({
-    id: uuid(),
-    label: faker.lorem.words(2),
-    description: faker.lorem.sentence(),
-    disabled: index === 2,
-    value: uuid(),
-  }));
-
-const args = {
-  collection: createListCollection({
-    items: generateItems(10),
-  }),
-  items: generateItems(10),
-  name: faker.lorem.word(),
-  placeholder: faker.lorem.words(2),
-};
-
-export const Single: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const Multiple: Story = {
   args: {
-    ...args,
     multiple: true,
     selectionBehavior: ComboBoxSelectionBehaviorEnum.Preserve,
   },
 };
 
-export const SingleWithField: Story = {
+export const WithField: Story = {
   args: {
-    ...args,
     description: faker.lorem.sentence(),
     errorMessage: faker.lorem.sentence(),
     withField: true,
@@ -368,7 +361,6 @@ export const SingleWithField: Story = {
 
 export const MultipleWithField: Story = {
   args: {
-    ...args,
     description: faker.lorem.sentence(),
     errorMessage: faker.lorem.sentence(),
     multiple: true,
