@@ -12,6 +12,23 @@ import { AccordionDirectionEnum, AccordionOrientationEnum } from "./types";
 import { HeadingLevelEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
+
+const AccordionContent = () => (
+    <>
+      <span className="mr-2">{faker.lorem.word()}</span>
+      <i aria-hidden="true" className={IconStyles}></i>
+    </>
+);
+
+const generateItems = (length: number) =>
+    Array.from({ length }).map((_, index) => ({
+      content: <AccordionContent />,
+      description: faker.lorem.sentence(),
+      disabled: index === 2,
+      id: `item-${index + 1}`,
+      title: faker.lorem.words(3),
+    }));
+
 const meta = {
   title: "Accordion - Multiple",
   component: MultipleAccordionStory,
@@ -19,8 +36,10 @@ const meta = {
   args: {
     asChild: false,
     defaultValue: [],
-    disabled: false,
     dir: AccordionDirectionEnum.Left,
+    disabled: false,
+    headingLevel: HeadingLevelEnum.Three,
+    items: generateItems(5),
     orientation: AccordionOrientationEnum.Vertical,
     type: "multiple",
     value: [],
@@ -91,34 +110,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const AccordionContent = () => (
-  <>
-    <span className="mr-2">{faker.lorem.word()}</span>
-    <i aria-hidden="true" className={IconStyles}></i>
-  </>
-);
-
-const generateItems = (length: number) =>
-  Array.from({ length }).map((_, index) => ({
-    content: <AccordionContent />,
-    description: faker.lorem.sentence(),
-    disabled: index === 2,
-    id: `item-${index + 1}`,
-    title: faker.lorem.words(3),
-  }));
-
-const args = {
-  headingLevel: HeadingLevelEnum.Three,
-  items: generateItems(5),
-};
-
-export const Basic: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const WithDefaultValues: Story = {
   args: {
-    ...args,
     defaultValue: ["item-1", "item-2"],
   },
 };

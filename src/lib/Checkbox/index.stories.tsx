@@ -13,7 +13,10 @@ const meta = {
   component: Checkbox,
   tags: ["autodocs"],
   args: {
+    description: faker.lorem.sentence(),
     disabled: false,
+    errorMessage: faker.lorem.sentence(),
+    name: faker.lorem.word(),
     required: false,
     value: "on",
   },
@@ -74,7 +77,7 @@ const meta = {
     withField: {
       control: "boolean",
       description:
-          "Use label, description, and error message with validation state.",
+        "Use label, description, and error message with validation state.",
     },
   },
 } satisfies Meta<typeof Checkbox>;
@@ -82,26 +85,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const args = {
-  description: faker.lorem.sentence(),
-  errorMessage: faker.lorem.sentence(),
-  name: faker.lorem.word(),
-};
-
-export const Basic: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const DefaultChecked: Story = {
   args: {
-    ...args,
     defaultChecked: true,
   },
 };
 
 export const WithField: Story = {
   args: {
-    ...args,
     withField: true,
   },
 };

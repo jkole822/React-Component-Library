@@ -8,27 +8,8 @@ import Carousel from ".";
 // Types
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta = {
-  title: "Carousel",
-  component: Carousel,
-  tags: ["autodocs"],
-  argTypes: {
-      className: {
-          control: "text",
-          description: "Class that is applied to top level element.",
-      },
-      items: {
-          control: "object",
-          description: "The collection of carousel items.",
-      },
-  },
-} satisfies Meta<typeof Carousel>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
 const generateItems = (length: number) =>
-  Array.from({ length }).map((_) => ({
+  Array.from({ length }).map(() => ({
     cta: {
       href: "#",
       target: "_self" as const,
@@ -43,17 +24,32 @@ const generateItems = (length: number) =>
     title: faker.lorem.words(3),
   }));
 
-const args = {
-  items: generateItems(10),
-};
+const meta = {
+  title: "Carousel",
+  component: Carousel,
+  tags: ["autodocs"],
+  args: {
+    items: generateItems(10),
+  },
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Class that is applied to top level element.",
+    },
+    items: {
+      control: "object",
+      description: "The collection of carousel items.",
+    },
+  },
+} satisfies Meta<typeof Carousel>;
 
-export const Basic: Story = {
-  args,
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {};
 
 export const FullScreenHeight: Story = {
   args: {
-    ...args,
     className: "h-screen",
   },
 };

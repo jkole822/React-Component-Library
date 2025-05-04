@@ -12,6 +12,22 @@ import { AccordionDirectionEnum, AccordionOrientationEnum } from "./types";
 import { HeadingLevelEnum } from "../../types";
 import type { Meta, StoryObj } from "@storybook/react";
 
+const AccordionContent = () => (
+  <>
+    <span className="mr-2">{faker.lorem.word()}</span>
+    <i aria-hidden="true" className={IconStyles}></i>
+  </>
+);
+
+const generateItems = (length: number) =>
+  Array.from({ length }).map((_, index) => ({
+    content: <AccordionContent />,
+    description: faker.lorem.sentence(),
+    disabled: index === 2,
+    id: `item-${index + 1}`,
+    title: faker.lorem.words(3),
+  }));
+
 const meta = {
   title: "Accordion - Single",
   component: SingleAccordionStory,
@@ -19,33 +35,35 @@ const meta = {
   args: {
     asChild: false,
     collapsible: false,
-    defaultValue: '',
+    defaultValue: "",
     disabled: false,
     dir: AccordionDirectionEnum.Left,
     orientation: AccordionOrientationEnum.Vertical,
-    type: 'single',
-    value: ''
+    type: "single",
+    value: "",
+    headingLevel: HeadingLevelEnum.Three,
+    items: generateItems(5),
   },
   argTypes: {
     asChild: {
-      control: 'boolean',
-      description: 'Renders the component as a child element.',
+      control: "boolean",
+      description: "Renders the component as a child element.",
     },
     className: {
       control: "text",
       description: "Class that is applied to top level element.",
     },
     collapsible: {
-      control: 'boolean',
+      control: "boolean",
       description: 'When type is "single", allows closing the open item.',
     },
     defaultValue: {
-      control: 'text',
-      description: 'The value of the item(s) to be expanded by default.',
+      control: "text",
+      description: "The value of the item(s) to be expanded by default.",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disables the entire accordion.',
+      control: "boolean",
+      description: "Disables the entire accordion.",
     },
     dir: {
       control: {
@@ -71,10 +89,10 @@ const meta = {
       description: "The collection of list items.",
     },
     onValueChange: {
-      action: 'onValueChange',
-      description: 'Callback when the value changes.',
+      action: "onValueChange",
+      description: "Callback when the value changes.",
       table: {
-        category: 'Events',
+        category: "Events",
       },
     },
     orientation: {
@@ -87,8 +105,8 @@ const meta = {
       ],
     },
     value: {
-      control: 'text',
-      description: 'The controlled value of the item(s) to be expanded.',
+      control: "text",
+      description: "The controlled value of the item(s) to be expanded.",
     },
   },
 } satisfies Meta<typeof SingleAccordionStory>;
@@ -96,35 +114,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const AccordionContent = () => (
-  <>
-    <span className="mr-2">{faker.lorem.word()}</span>
-    <i aria-hidden="true" className={IconStyles}></i>
-  </>
-);
-
-const generateItems = (length: number) =>
-  Array.from({ length }).map((_, index) => ({
-    content: <AccordionContent />,
-    description: faker.lorem.sentence(),
-    disabled: index === 2,
-    id: `item-${index + 1}`,
-    title: faker.lorem.words(3),
-  }));
-
-const args = {
-  headingLevel: HeadingLevelEnum.Three,
-  items: generateItems(5),
-  type: "single" as const,
-};
-
-export const Basic: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const WithDefaultValues: Story = {
   args: {
-    ...args,
     defaultValue: "item-2",
   },
 };

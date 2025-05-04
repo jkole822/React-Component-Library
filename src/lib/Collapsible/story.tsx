@@ -12,7 +12,6 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function CollapsibleStory({
-  children,
   defaultOpen,
   ...rest
 }: Props) {

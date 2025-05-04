@@ -9,14 +9,14 @@ import type { Props } from "./types";
 
 export default function Collapsible({
   className = "",
-  buttonContent,
   children,
+  triggerContent,
   ...rest
 }: Props) {
   return (
     <RadixCollapsible.Root {...rest} className={className}>
       <RadixCollapsible.Trigger className={TriggerStyles}>
-        {buttonContent}
+        {triggerContent}
         <i
           aria-hidden="true"
           className="fa-solid fa-sort in-data-[state=open]:hidden!"
