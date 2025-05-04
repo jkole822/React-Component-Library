@@ -10,7 +10,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 // Types
 import type { ComboBoxItem, Props } from "./types";
 
-export default function ComboBoxStory(props: Props) {
+export default function ComboBoxStory({ items, ...rest }: Props) {
   const [value, setValue] = useState<string[]>([]);
 
   const handleChange = (update: { items: ComboBoxItem[]; value: string[] }) => {
@@ -24,7 +24,8 @@ export default function ComboBoxStory(props: Props) {
   return (
     <>
       <ComboBox
-        {...props}
+        {...rest}
+        items={items}
         onRemoveItem={handleRemoveItem}
         onValueChange={handleChange}
         value={value}
@@ -32,8 +33,10 @@ export default function ComboBoxStory(props: Props) {
       <p className={SubHeadingStyles}>Binding Check</p>
       <p className={PararaphStyles}>Selected Item IDs:</p>
       <div className="flex flex-col gap-0.5 mt-1 text-sm">
-        {value.map((id) => (
-          <span key={id}>{id}</span>
+        {value.map((val) => (
+          <span key={val}>
+            {items.find((item) => item.value === val)?.label ?? ""}
+          </span>
         ))}
       </div>
     </>
