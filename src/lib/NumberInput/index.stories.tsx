@@ -15,11 +15,14 @@ const meta = {
   args: {
     allowOverflow: true,
     clampValueOnBlur: true,
+    description: faker.lorem.sentence(),
+    errorMessage: faker.lorem.sentence(),
     focusInputOnChange: true,
     inputMode: "decimal",
     locale: "en-US",
     max: Number.MAX_SAFE_INTEGER,
     min: Number.MIN_SAFE_INTEGER,
+    name: faker.lorem.word(),
     pattern: "[0-9]*(.[0-9]+)?",
     spinOnPress: true,
     step: 1,
@@ -174,19 +177,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const args = {
-  description: faker.lorem.sentence(),
-  errorMessage: faker.lorem.sentence(),
-  name: faker.lorem.word(),
-};
-
-export const Basic: Story = {
-  args,
-};
+export const Basic: Story = {};
 
 export const WithField: Story = {
   args: {
-    ...args,
     withField: true,
   },
 };
