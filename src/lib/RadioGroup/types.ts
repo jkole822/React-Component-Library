@@ -15,7 +15,6 @@ export interface Props extends RadioGroup.RadioGroupProps {
   description?: string;
   errorMessage?: string;
   items: string[];
-  onValueChange: (value: string) => void;
   orientation?: RadioGroupOrientation;
   validationState?: ValidationState;
   withField?: boolean;
