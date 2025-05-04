@@ -34,7 +34,7 @@ const meta = {
     },
     className: {
       control: "text",
-      description: "Additional CSS classes to apply to the slider container.",
+      description: "Additional CSS classes to apply to the slider root.",
     },
     defaultValue: {
       control: "object",
@@ -56,7 +56,7 @@ const meta = {
     },
     errorMessage: {
       control: "text",
-      description: "Error message displayed when validation fails and .",
+      description: "Error message displayed when validation fails and `withField` is `true`.",
     },
     form: {
       control: "text",
