@@ -66,6 +66,10 @@ const meta = {
         HeadingLevelEnum.Six,
       ],
     },
+    items: {
+      control: "object",
+      description: "The collection of list items.",
+    },
     onValueChange: {
       action: 'onValueChange',
       description: 'Callback when the value changes.',

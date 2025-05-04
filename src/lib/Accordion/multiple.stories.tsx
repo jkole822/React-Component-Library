@@ -61,6 +61,10 @@ const meta = {
         HeadingLevelEnum.Six,
       ],
     },
+    items: {
+      control: "object",
+      description: "The collection of accordion items.",
+    },
     onValueChange: {
       action: "onValueChange",
       description: "Callback when the value changes.",

@@ -22,12 +22,13 @@ export default function Button({
   ariaHaspopup,
   children,
   className = "",
+    disabled,
   href,
   onClick,
   showBottomGlow = false,
   target = "_self",
   type = "button",
-  variant = ButtonVariantsEnum.fill,
+  variant = ButtonVariantsEnum.Fill,
   ...rest
 }: Props) {
   const [active, setActive] = useState(false);
@@ -40,16 +41,16 @@ export default function Button({
     }
   }, [active]);
 
-  const isFillButton = variant === ButtonVariantsEnum.fill;
+  const isFillButton = variant === ButtonVariantsEnum.Fill;
   const isLink = !!href;
   const Comp = isLink ? "a" : "button";
   const variantStyles = isFillButton
     ? FillButtonStyles({ active })
-    : variant === ButtonVariantsEnum.outline
+    : variant === ButtonVariantsEnum.Outline
       ? OutlineButtonStyles({ showBottomGlow })
-      : variant === ButtonVariantsEnum.lineOne
+      : variant === ButtonVariantsEnum.LineOne
         ? LineOneButtonStyles
-        : variant === ButtonVariantsEnum.lineTwo
+        : variant === ButtonVariantsEnum.LineTwo
           ? LineTwoButtonStyles
           : "";
 
@@ -62,6 +63,8 @@ export default function Button({
         }
       : { ariaControls, ariaExpanded, ariaHaspopup, type }),
     class: `${className} ${variantStyles}`,
+    disabled,
+    'data-disabled': disabled,
     onClick: () => {
       setActive(true);
       if (onClick) onClick();

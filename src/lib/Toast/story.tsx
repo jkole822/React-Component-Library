@@ -34,7 +34,7 @@ export default function ToastStory() {
     <div>
       <div className="flex gap-4">
         <Button onClick={createToast}>Create Toast</Button>
-        <Button onClick={updateToast} variant={ButtonVariantsEnum.outline}>
+        <Button onClick={updateToast} variant={ButtonVariantsEnum.Outline}>
           Update Toast
         </Button>
       </div>

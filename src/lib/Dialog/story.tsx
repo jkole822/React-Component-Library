@@ -20,7 +20,7 @@ export default function DialogStory({ defaultOpen, ...rest }: Props) {
   const [username, setUsername] = useState("");
 
   const Trigger = () => (
-    <Button onClick={() => setOpen(!open)} variant={ButtonVariantsEnum.fill}>
+    <Button onClick={() => setOpen(!open)} variant={ButtonVariantsEnum.Fill}>
       Open Dialog
     </Button>
   );

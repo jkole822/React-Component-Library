@@ -40,7 +40,7 @@ const TabContent = ({
       name={label}
     />
     <div className="mt-5 flex justify-end">
-      <Button variant={ButtonVariantsEnum.outline}>{buttonText}</Button>
+      <Button variant={ButtonVariantsEnum.Outline}>{buttonText}</Button>
     </div>
   </>
 );

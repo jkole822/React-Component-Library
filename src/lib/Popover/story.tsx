@@ -32,7 +32,7 @@ export default function PopoverStory(props: Props) {
           <Button
             className="rounded-full! p-0! size-15!"
             onClick={() => setOpen(!open)}
-            variant={ButtonVariantsEnum.outline}
+            variant={ButtonVariantsEnum.Outline}
           >
             <i aria-hidden="true" className="fa-solid fa-ghost text-2xl"></i>
           </Button>

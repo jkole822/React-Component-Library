@@ -12,7 +12,16 @@ const meta = {
   title: "Carousel",
   component: Carousel,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+      className: {
+          control: "text",
+          description: "Class that is applied to top level element.",
+      },
+      items: {
+          control: "object",
+          description: "The collection of carousel items.",
+      },
+  },
 } satisfies Meta<typeof Carousel>;
 
 export default meta;
@@ -38,7 +47,7 @@ const args = {
   items: generateItems(10),
 };
 
-export const MinHeight: Story = {
+export const Basic: Story = {
   args,
 };
 

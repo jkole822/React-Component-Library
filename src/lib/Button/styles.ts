@@ -17,12 +17,12 @@ transition-all
 w-full
 2xs:w-fit
 
-data-disabled:[text-shadow:none]
-data-disabled:bg-transparent
-data-disabled:border-neutral-primary-600
-data-disabled:cursor-not-allowed
-data-disabled:shadow-none
-data-disabled:text-neutral-primary-600
+data-[disabled=true]:[text-shadow:none]
+data-[disabled=true]:bg-transparent
+data-[disabled=true]:border-neutral-primary-600
+data-[disabled=true]:cursor-not-allowed
+data-[disabled=true]:shadow-none
+data-[disabled=true]:text-neutral-primary-600
 `;
 
 const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
@@ -34,7 +34,7 @@ const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
 [&_.star]:h-auto
 [&_.star]:transition-all
 
-[&[disabled]_.star]:invisible
+data-[disabled=true]:[&_.star]:invisible
 
 ${active ? `
 [&_.star]:![filter:drop-shadow(0_0_10px_var(--color-neutral-primary-100))]
@@ -55,8 +55,8 @@ transition-all
 uppercase
 w-fit
 
-data-disabled:text-neutral-primary-600!
-data-disabled:cursor-not-allowed
+data-[disabled=true]:text-neutral-primary-600!
+data-[disabled=true]:cursor-not-allowed
 
 focus:text-neutral-primary-50
 
@@ -72,7 +72,7 @@ after:pointer-events-none
 after:transition-all
 after:w-0
 
-data-disabled:after:w-0!
+data-[disabled=true]:after:w-0!
 
 focus:after:w-full
 
@@ -187,7 +187,7 @@ after:w-full
     : ``
 }
 
-data-disabled:after:content-none
+data-[disabled=true]:after:content-none
 `;
 
 export const LineOneButtonStyles = oneLine`
@@ -216,7 +216,7 @@ before:right-0
 before:transition-all
 before:w-0
 
-data-disabled:before:w-0!
+data-[disabled=true]:before:w-0!
 
 focus:before:w-full
 

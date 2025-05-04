@@ -60,7 +60,7 @@ export default function Carousel({ className = "", items }: Props) {
               <h2 className={HeadingStyles}>{title}</h2>
               <p className={DescriptionStyles}>{description}</p>
               {!!cta && (
-                <Button {...cta} variant={ButtonVariantsEnum.outline}>
+                <Button {...cta} variant={ButtonVariantsEnum.Outline}>
                   {cta?.title}
                 </Button>
               )}
@@ -73,7 +73,7 @@ export default function Carousel({ className = "", items }: Props) {
           aria-label="Previous slide"
           className={ButtonStyles}
           onClick={handlePrevious}
-          variant={ButtonVariantsEnum.fill}
+          variant={ButtonVariantsEnum.Fill}
         >
           <i aria-hidden="true" className={ButtonIconStyles}></i>
         </Button>
@@ -81,7 +81,7 @@ export default function Carousel({ className = "", items }: Props) {
           aria-label="Next slide"
           className={ButtonStyles}
           onClick={handleNext}
-          variant={ButtonVariantsEnum.fill}
+          variant={ButtonVariantsEnum.Fill}
         >
           <i
             aria-hidden="true"

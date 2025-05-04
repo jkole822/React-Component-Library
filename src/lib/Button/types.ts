@@ -1,17 +1,17 @@
 import type { ReactNode } from "react";
 
 export enum ButtonVariantsEnum {
-  fill = "fill",
-  lineOne = "lineOne",
-  lineTwo = "lineTwo",
-  outline = "outline",
+  Fill = "fill",
+  LineOne = "lineOne",
+  LineTwo = "lineTwo",
+  Outline = "outline",
 }
 
 export type ButtonVariants =
-  | ButtonVariantsEnum.fill
-  | ButtonVariantsEnum.lineOne
-  | ButtonVariantsEnum.lineTwo
-  | ButtonVariantsEnum.outline;
+  | ButtonVariantsEnum.Fill
+  | ButtonVariantsEnum.LineOne
+  | ButtonVariantsEnum.LineTwo
+  | ButtonVariantsEnum.Outline;
 
 export interface Props {
   ariaControls?: string;
