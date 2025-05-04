@@ -136,7 +136,7 @@ const meta = {
     },
     items: {
       control: "object",
-      description: "The collection of list items"
+      description: "The collection of list items.",
     },
     lazyMount: {
       control: "boolean",
@@ -157,44 +157,84 @@ const meta = {
         "The `name` attribute of the combobox's input. Useful for form submission.",
     },
     navigate: {
+      action: 'navigate',
       description:
         "(details: NavigateDetails) => void\nFunction to navigate to the selected item.",
+      table: {
+        category: "Events",
+      },
     },
     onExitComplete: {
+      action: 'onExitComplete',
       description:
         "VoidFunction\nFunction called when the animation ends in the closed state.",
+      table: {
+        category: "Events",
+      },
     },
     onHighlightChange: {
+      action: 'onHighlightChange',
       description:
         "(details: HighlightChangeDetails<T>) => void\nFunction called when an item is highlighted using the pointer or keyboard navigation.",
+      table: {
+        category: "Events",
+      },
     },
     onInputValueChange: {
+      action: 'onInputValueChange',
       description:
         "(details: InputValueChangeDetails) => void\nFunction called when the input's value changes.",
+      table: {
+        category: "Events",
+      },
     },
     onInteractOutside: {
+      action: 'onInteractOutside',
       description:
         "(event: InteractOutsideEvent) => void\nFunction called when an interaction happens outside the component.",
+      table: {
+        category: "Events",
+      },
     },
     onOpenChange: {
+      action: 'onOpenChange',
       description:
         "(details: OpenChangeDetails) => void\nFunction called when the popup is opened.",
+      table: {
+        category: "Events",
+      },
     },
     onPointerDownOutside: {
+      action: 'onPointerDownOutside',
       description:
         "(event: PointerDownOutsideEvent) => void\nFunction called when the pointer is pressed down outside the component.",
+      table: {
+        category: "Events",
+      },
     },
     onRemoveItem: {
+      action: 'onRemoveItem',
       description:
         "(value: string) => void\nFunction called when `multiple` is `true` and an item is removed from list of selected items.",
+      table: {
+        category: "Events",
+      },
     },
     onSelect: {
+      action: 'onSelect',
       description:
         "(details: SelectionDetails) => void\nFunction called when an item is selected",
+      table: {
+        category: "Events",
+      },
     },
     onValueChange: {
+      action: 'onValueChange',
       description:
         "(details: ValueChangeDetails<T>) => void\nFunction called when a new item is selected",
+      table: {
+        category: "Events",
+      },
     },
     open: {
       control: "boolean",
@@ -207,38 +247,47 @@ const meta = {
     },
     openOnClick: {
       control: "boolean",
-      description: "Whether to open the combobox popup on initial click on the input.",
+      description:
+        "Whether to open the combobox popup on initial click on the input.",
     },
     openOnKeyPress: {
       control: "boolean",
-      description: "Whether to open the combobox on arrow key press."
+      description: "Whether to open the combobox on arrow key press.",
     },
     placeholder: {
       control: "text",
-      description: "The placeholder text of the combobox's input."
+      description: "The placeholder text of the combobox's input.",
     },
     positioning: {
       control: "object",
-      description: "PositioningOptions\nThe positioning options to dynamically position the menu"
+      description:
+        "PositioningOptions\nThe positioning options to dynamically position the menu",
     },
     present: {
       control: "boolean",
-      description: "Whether the node is present (controlled by the user)."
+      description: "Whether the node is present (controlled by the user).",
     },
     readOnly: {
       control: "boolean",
-      description: "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode but the user can still interact with it."
+      description:
+        'Whether the combobox is readonly. This puts the combobox in a "non-editable" mode but the user can still interact with it.',
     },
     required: {
       control: "boolean",
-      description: "Whether the combobox is required."
+      description: "Whether the combobox is required.",
     },
     scrollToIndexFn: {
-      description: "(details: ScrollToIndexDetails) => void\nFunction to scroll to a specific index."
+      action: 'scrollToIndexFn',
+      description:
+        "(details: ScrollToIndexDetails) => void\nFunction to scroll to a specific index.",
+      table: {
+        category: "Events",
+      },
     },
     selectionBehavior: {
       control: "select",
-      description: "The behavior of the combobox input when an item is selected - `replace`: The selected item string is set as the input value - `clear`: The input value is cleared - `preserve`: The input value is preserved.",
+      description:
+        "The behavior of the combobox input when an item is selected - `replace`: The selected item string is set as the input value - `clear`: The input value is cleared - `preserve`: The input value is preserved.",
       options: [
         ComboBoxSelectionBehaviorEnum.Replace,
         ComboBoxSelectionBehaviorEnum.Clear,
@@ -247,15 +296,16 @@ const meta = {
     },
     skipAnimationOnMount: {
       control: "boolean",
-      description: "Whether to allow the initial presence animation."
+      description: "Whether to allow the initial presence animation.",
     },
     translations: {
       control: "object",
-      description: "IntlTranslations\nSpecifies the localized strings that identifies the accessibility elements and their states."
+      description:
+        "IntlTranslations\nSpecifies the localized strings that identifies the accessibility elements and their states.",
     },
     unmountOnExit: {
       control: "boolean",
-      description: "Whether to unmount on exit."
+      description: "Whether to unmount on exit.",
     },
     validationState: {
       control: "select",
@@ -264,7 +314,7 @@ const meta = {
     },
     value: {
       control: "object",
-      description: "The controlled value of the combobox's selected items."
+      description: "The controlled value of the combobox's selected items.",
     },
     withField: {
       control: "boolean",
