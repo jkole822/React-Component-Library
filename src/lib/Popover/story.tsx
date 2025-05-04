@@ -16,18 +16,21 @@ import { AutoCompleteEnum } from "../Input/types";
 import { ButtonVariantsEnum } from "../Button/types.ts";
 import type { Props } from "./types";
 
-export default function PopoverStory(props: Props) {
+export default function PopoverStory({ defaultOpen, ...rest }: Props) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const id = useMemo(() => uuid(), []);
   const name = useMemo(() => faker.lorem.word(), []);
 
+  const openProps = defaultOpen
+    ? { defaultOpen }
+    : { open, onOpenChange: setOpen };
+
   return (
     <>
       <Popover
-        {...props}
-        open={open}
-        onOpenChange={setOpen}
+        {...rest}
+        {...openProps}
         trigger={
           <Button
             className="rounded-full! p-0! size-15!"
