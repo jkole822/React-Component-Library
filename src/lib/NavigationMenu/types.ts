@@ -16,7 +16,6 @@ export interface NavigationMenuItem {
   href: string;
   image?: ImageProps;
   onSelect?: () => void;
-  textValue?: string;
   title: string;
 }
 

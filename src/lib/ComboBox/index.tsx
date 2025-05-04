@@ -47,16 +47,16 @@ function ComboBoxRoot({
   const collection = useMemo(
     () =>
       createListCollection({
-        items: items.map((item) => ({ ...item, value: item.id })),
+        items,
       }),
-    [items]
+    [items],
   );
 
   const handleInputChange = (details: ArkComboBox.InputValueChangeDetails) => {
     setItems(
       initialItems.filter((item) =>
-        item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-      )
+        item.label.toLowerCase().includes(details.inputValue.toLowerCase()),
+      ),
     );
   };
 
