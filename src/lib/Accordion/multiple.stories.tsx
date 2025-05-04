@@ -16,8 +16,32 @@ const meta = {
   title: "Accordion - Multiple",
   component: MultipleAccordionStory,
   tags: ["autodocs"],
+  args: {
+    asChild: false,
+    defaultValue: [],
+    disabled: false,
+    dir: AccordionDirectionEnum.Left,
+    orientation: AccordionOrientationEnum.Vertical,
+    type: "multiple",
+    value: [],
+  },
   argTypes: {
-    className: { control: "text" },
+    asChild: {
+      control: "boolean",
+      description: "Renders the component as a child element.",
+    },
+    className: {
+      control: "text",
+      description: "Class that is applied to top level element.",
+    },
+    defaultValue: {
+      control: "text",
+      description: "The value of the item(s) to be expanded by default.",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the entire accordion.",
+    },
     dir: {
       control: {
         type: "select",
@@ -37,6 +61,13 @@ const meta = {
         HeadingLevelEnum.Six,
       ],
     },
+    onValueChange: {
+      action: "onValueChange",
+      description: "Callback when the value changes.",
+      table: {
+        category: "Events",
+      },
+    },
     orientation: {
       control: {
         type: "select",
@@ -45,6 +76,10 @@ const meta = {
         AccordionOrientationEnum.Horizontal,
         AccordionOrientationEnum.Vertical,
       ],
+    },
+    value: {
+      control: "text",
+      description: "The controlled value of the item(s) to be expanded.",
     },
   },
 } satisfies Meta<typeof MultipleAccordionStory>;
@@ -71,7 +106,6 @@ const generateItems = (length: number) =>
 const args = {
   headingLevel: HeadingLevelEnum.Three,
   items: generateItems(5),
-  type: "multiple" as const,
 };
 
 export const Basic: Story = {

@@ -7,7 +7,7 @@ export enum AccordionDirectionEnum {
   Right = "rtl",
 }
 
-export type AccordionDirectionType =
+export type AccordionDirection =
   | AccordionDirectionEnum.Left
   | AccordionDirectionEnum.Right;
 
@@ -37,6 +37,7 @@ export interface SingleProps extends Accordion.AccordionSingleProps {
 
 export interface MultipleProps extends Accordion.AccordionMultipleProps {
   className?: string;
+  dir?: AccordionDirection;
   headingLevel: HeadingLevels;
   items: AccordionItem[];
   orientation?: AccordionOrientationType;
