@@ -61,6 +61,9 @@ const meta = {
     onCheckedChange: {
       action: "onCheckedChange",
       description: "Called when the checked state changes.",
+      table: {
+        category: "Events"
+      }
     },
     validationState: {
       control: "select",

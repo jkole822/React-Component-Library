@@ -47,7 +47,7 @@ const meta = {
     dir: {
       control: "select",
       description:
-        "The reading direction of the select. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
+        "The reading direction of the slider. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode.",
       options: ["ltr", "rtl"],
     },
     disabled: {
@@ -86,10 +86,16 @@ const meta = {
     onValueChange: {
       action: "onValueChange",
       description: "Called when the slider value changes.",
+      table: {
+        category: "Events"
+      }
     },
     onValueCommit: {
       action: "onValueCommit",
       description: "Called when the slider value change is committed.",
+      table: {
+        category: "Events"
+      }
     },
     orientation: {
       control: "select",
