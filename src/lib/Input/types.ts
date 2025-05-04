@@ -31,7 +31,7 @@ export type InputType =
   | InputTypeEnum.password
   | InputTypeEnum.text;
 
-export interface Props extends Field.RootBaseProps {
+export interface Props extends Field.RootProps {
   autoComplete?: AutoCompleteType;
   className?: string;
   description?: string;
