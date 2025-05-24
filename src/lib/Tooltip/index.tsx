@@ -25,7 +25,7 @@ export default function Tooltip({
             {...contentProps}
             className={`${className} ${TooltipStyles}`}
           >
-            <RadixTooltip.Arrow className="fill-primary-500" />
+            <RadixTooltip.Arrow className="fill-primary-300" />
             <p className={TextStyles}>{text}</p>
           </RadixTooltip.Content>
         </RadixTooltip.Portal>
