@@ -29,7 +29,7 @@ data-disabled:[&_.switch-control]:bg-neutral-primary-600
 data-disabled:[&_.switch-control:after]:-translate-x-[22.5%]
 data-disabled:[&_.switch-control:after]:[background:linear-gradient(transparent_50%,_--alpha(var(--color-neutral-primary-400)_/_0.15)_0)_0_50%_/_50%_100%,_repeating-linear-gradient(90deg,var(--color-neutral-primary-400)_0,var(--color-neutral-primary-400),var(--color-neutral-primary-400)_20%,var(--color-neutral-primary-400)_20%,var(--color-neutral-primary-400)_40%)_0_50%_/_50%_100%,_radial-gradient(circle_at_50%_50%,var(--color-neutral-primary-400)_25%,_transparent_26%)]
 data-disabled:[&_.switch-control:after]:[border-left:0.4em_solid_var(--color-neutral-primary-400)_!important]
-data-disabled:[&_.switch-control:after]:rotate-90
+data-disabled:[&_.switch-control:after]:rotate-z-90
 
 data-disabled:[&_.switch-control_.switch-thumb]:bg-neutral-primary-400
 data-disabled:[&_.switch-control_.switch-thumb]:translate-y-0
