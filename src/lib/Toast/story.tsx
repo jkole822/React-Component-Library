@@ -6,39 +6,47 @@ import { useState } from "react";
 import Button from "../Button";
 import Toast from ".";
 
+// Utils
+import { toast, dismissToast, updateToast } from "./toaster";
+
 // Types
 import { ButtonVariantsEnum } from "../Button/types";
-import { ToastTypeEnum } from "./types";
-import type { IToast } from "./types";
 
 export default function ToastStory() {
-  const [toast, setToast] = useState<IToast | undefined>();
+  const [toastId, setToastId] = useState("");
 
-  const createToast = () => {
-    setToast({
-      title: faker.lorem.words(2),
-      description: faker.lorem.sentence(),
-      type: ToastTypeEnum.Create,
-    });
+  const create = () => {
+    setToastId(
+      toast({
+        title: faker.lorem.words(2),
+        description: faker.lorem.sentence(),
+        type: "info",
+      }),
+    );
   };
 
-  const updateToast = () => {
-    setToast({
+  const dismiss = () => {
+    dismissToast(toastId);
+  };
+
+  const update = () => {
+    updateToast(toastId, {
       title: faker.lorem.words(2),
       description: faker.lorem.sentence(),
-      type: ToastTypeEnum.Update,
+      type: "success",
     });
   };
 
   return (
     <div>
-      <div className="flex gap-4">
-        <Button onClick={createToast}>Create Toast</Button>
-        <Button onClick={updateToast} variant={ButtonVariantsEnum.Outline}>
-          Update Toast
+      <div className="flex flex-col gap-4 items-start">
+        <Button onClick={create} variant={ButtonVariantsEnum.Outline}>
+          Create Toast
         </Button>
+        <Button onClick={update}>Update Toast</Button>
+        <Button onClick={dismiss}>Dismiss Toast</Button>
       </div>
-      <Toast toast={toast}></Toast>
+      <Toast />
     </div>
   );
 }

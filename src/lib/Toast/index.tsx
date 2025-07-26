@@ -1,6 +1,5 @@
 // Packages
-import { createToaster, Toast as ArkToast, Toaster } from "@ark-ui/react/toast";
-import { useEffect, useRef } from "react";
+import { Toast as ArkToast, Toaster } from "@ark-ui/react/toast";
 
 // Styles
 import {
@@ -10,39 +9,10 @@ import {
   TitleStyles,
 } from "./styles";
 
-// Types
-import { ToastTypeEnum } from "./types";
-import type { Props } from "./types";
+// Utils
+import { toaster } from "./toaster";
 
-const toaster = createToaster({
-  placement: "bottom-end",
-  overlap: true,
-  gap: 10,
-});
-
-export default function Toast({ toast }: Props) {
-  const id = useRef("");
-
-  const createToast = () => {
-    if (!toast) return;
-
-    id.current = toaster.create(toast);
-  };
-
-  const updateToast = () => {
-    if (!id.current || !toast) return;
-
-    toaster.update(id.current, toast);
-  };
-
-  useEffect(() => {
-    if (toast?.type === ToastTypeEnum.Create) {
-      createToast();
-    } else {
-      updateToast();
-    }
-  }, [toast]);
-
+export default function Toast() {
   return (
     <Toaster toaster={toaster}>
       {(toast) => (
